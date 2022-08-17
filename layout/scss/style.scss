@@ -1,0 +1,75 @@
+/**
+  * Jobbörse Software - Base Framework
+  */
+  
+// SETTINGS
+@import "abstracts/functions";
+@import "abstracts/variables";
+@import "abstracts/keyframes";
+@import "abstracts/mixins";
+@import "abstracts/project-mixins";
+
+
+// GENERIC
+@import "generic/normalize";
+@import "generic/reset";
+// @import "generic/box-sizing";
+
+
+// BASE
+@import "base/fonts";
+@import "base/shared";
+@import "base/page";
+@import "base/type";
+
+// Layout
+@import "layout/layout";
+@import "layout/header";
+@import "layout/container";
+@import "layout/footer";
+@import "layout/custom-layout-areas";
+
+
+// COMPONENTS
+@import "components/buttons";
+//@import "components/media";
+//@import "components/links";
+@import "components/navs/navs";
+@import "components/navs/breadcrumb";
+@import "components/navs/pagination";
+//@import "components/slider";
+//@import "components/news";
+//@import "components/events";
+@import "components/forms";
+//@import "components/accordion";
+//@import "components/downloads";
+//@import "components/tables";
+//@import "components/newsletter";
+//@import "components/faq";
+//@import "components/comments";
+//@import "components/gallery";
+@import "components/search";
+@import "components/ui-autocomplete";
+@import "components/list";
+@import "components/element-modifier";
+@import "components/custom-elements";
+//@import "components/article";
+//@import "components/tinyMCE";
+
+//Third-Party
+//@import "../fonts/fontawesome/scss/font-awesome";
+@import "vendor/selectric-custom";
+//@import "vendor/rs-columns";
+@import "vendor/fine-uploader";
+@import "vendor/euf_grid_css_grid_custom";
+//@import "vendor/dlh_gmaps_custom";
+//@import "vendor/slick";
+
+// Pages
+//@import "pages/home";
+
+// RESPONSIVE
+@import "responsive/max-width-dynamic"; // max-width = $content-padding-first-break-point * 2 + $content-width
+@import "responsive/max-width-1024";
+@import "responsive/max-width-768";
+@import "responsive/max-width-480";

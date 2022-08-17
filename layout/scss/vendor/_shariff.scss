@@ -1,0 +1,47 @@
+.mod_hofff_shariff {
+    .shariff {
+        .shariff-button {
+            width: auto;
+            height: auto;
+            font-size: 30px;
+
+            a {
+                background-color: transparent;
+                @include fa-brands-button('\f26d');
+                height: 1em;
+                width: 1em;
+
+                &:before {
+                    line-height: 1;
+                }
+
+                &:hover {
+                    color: lighten($color-default, 20);
+                }
+            }
+
+            $shariffIcons: (
+                'facebook': '\f082',
+                'twitter': '\f081',
+                'whatsapp': '\f40c',
+                'linkedin': '\f08c',
+                'mail': '\f199'
+            );
+
+            @each $social, $icon in $shariffIcons {
+                &.#{$social} a:before {
+                    content: $icon;
+                }
+            }
+
+            $shariffSolidFontFamily: 'mail';
+
+            @each $socialSolid in $shariffSolidFontFamily {
+                &.#{$socialSolid} a:before {
+                    font-family: $fa;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.ce_downloads, .ce_download, .enclosure {
+    img.mime_icon {
+        display: inline-block;
+    }
+    @if ($font-awesome-active == true) {
+        img.mime_icon {
+            display: none;
+        }
+        a {
+            position: relative;
+            padding-left: 1.4em;
+            display: inline-block;
+
+            &:before {
+                font-family: $fa;
+                font-weight: 900;
+                content: "\f019";
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}

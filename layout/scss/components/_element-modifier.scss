@@ -1,0 +1,15 @@
+// Contao Float Classes
+
+.float_above, .float_left, .float_right {
+    margin-bottom: $base-spacing;
+}
+.float_left {
+    margin-right: $base-spacing;
+}
+.float_right {
+    margin-left: $base-spacing;
+}
+
+.force-overflow-visible {
+    overflow: visible !important;
+}

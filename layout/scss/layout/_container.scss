@@ -1,0 +1,110 @@
+// Container
+#container {
+    .inside {
+        > *:first-child {
+            padding-top: $base-spacing-large;
+        }
+
+        > *:last-child {
+            padding-bottom: $base-spacing-large;
+        }
+
+        p a {
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .mod_article.first > *:first-child, .mod_article.first > *:first-child > *:first-child {
+        margin-top: 0;
+    }
+}
+
+#main {
+    .mod_article {
+        padding-bottom: $base-spacing-x-large;
+
+        .inside-article {
+            > div, .ce_columns > div {
+                margin-bottom: $base-spacing;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    pre, blockquote, table, ol, ul, form, p {
+        margin-bottom: $base-spacing;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .ce_accordion + .ce_accordion {
+        margin-top: $base-spacing-xx-s;
+    }
+
+    .ce_accordion + * {
+        margin-top: $base-spacing;
+    }
+}
+
+// Left & Right Column
+
+body.layout-left, body.layout-right {
+    #container {
+        box-sizing: border-box;
+
+        @include clear;
+    }
+
+    #main {
+        float: left;
+        position: relative;
+        width: 100%;
+    }
+}
+
+// Left Column
+body.layout-left {
+    #container {
+        padding-left: $left-column-width;
+    }
+
+    #left {
+        position: relative;
+        float: left;
+        margin-left: -100%;
+        width: $left-column-width;
+        right: $left-column-width;
+
+        > .inside {
+            padding-right: $base-spacing;
+        }
+    }
+}
+
+
+// Right Column
+body.layout-right {
+    #container {
+        padding-right: $right-column-width;
+    }
+
+    #right {
+        position: relative;
+        float: left;
+        margin-right: -100%;
+        width: $right-column-width;
+
+        > .inside {
+            padding-left: $base-spacing;
+        }
+    }
+}

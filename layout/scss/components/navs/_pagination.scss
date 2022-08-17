@@ -1,0 +1,22 @@
+.pagination {
+    @include navigation;
+    @include clear;
+
+    padding-top: $base-spacing-s;
+
+    p {
+        float:left;
+    }
+
+    ul {
+        float: right;
+    }
+    li {
+        display: inline-block;
+        padding-right: $base-spacing-s;
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}

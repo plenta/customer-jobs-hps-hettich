@@ -1,0 +1,75 @@
+// Google Fonts
+$font-path: '/layout/static/fonts/';
+@each $label, $map in $load-fonts {
+    $font-family: str-replace($label, '_', ' ');
+    $fontNamePath: str-replace($label, '_', '');
+    $font-url: $font-path + $label;
+    $italic-path: '';
+    $fontWeightPath: '';
+    $fontWeight: normal;
+
+    @each $font-style-weight, $value in $map {
+        @if str-index($font-style-weight, '0i') {
+            $italic-path: 'Italic';
+        } @else {
+            $italic-path: '';
+        }
+
+        @if str-index($font-style-weight, '100') {
+            $fontWeightPath: 'Thin';
+            $fontWeight: 100;
+        }
+        @if str-index($font-style-weight, '200') {
+            $fontWeightPath: 'ExtraLight';
+            $fontWeight: 200;
+        }
+        @if str-index($font-style-weight, '300') {
+            $fontWeightPath: 'Light';
+            $fontWeight: 300;
+        }
+        @if str-index($font-style-weight, '400') {
+            $fontWeightPath: 'Regular';
+            $fontWeight: normal;
+
+            @if str-index($font-style-weight, '400i') {
+                $fontWeightPath: '';
+            }
+        }
+        @if str-index($font-style-weight, '500') {
+            $fontWeightPath: 'Medium';
+            $fontWeight: 500;
+        }
+        @if str-index($font-style-weight, '600') {
+            $fontWeightPath: 'SemiBold';
+            $fontWeight: 600;
+        }
+        @if str-index($font-style-weight, '700') {
+            $fontWeightPath: 'Bold';
+            $fontWeight: 700;
+        }
+        @if str-index($font-style-weight, '800') {
+            $fontWeightPath: 'ExtraBold';
+            $fontWeight: 800;
+        }
+        @if str-index($font-style-weight, '900') {
+            $fontWeightPath: 'Black';
+            $fontWeight: 900;
+        }
+
+        @if $value == true {
+            @font-face {
+                font-family: '#{$font-family}';
+                src: url($font-url + '/' + $fontNamePath + '-' + $fontWeightPath + $italic-path + '.woff2')  format('woff2');
+                src: url($font-url + '/' + $fontNamePath + '-' + $fontWeightPath + $italic-path + '.woff') format('woff'),
+                url($font-url + '/' + $fontNamePath + '-' + $fontWeightPath + $italic-path + '.ttf') format('truetype');
+                font-weight: $fontWeight;
+                font-display: swap;
+                @if str-index($font-style-weight, '0i') {
+                    font-style: italic;
+                } @else {
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}

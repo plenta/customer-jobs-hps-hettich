@@ -1,0 +1,41 @@
+.qq-upload-button {
+    @include button;
+    @include button-color(
+            $buttonColor: $color-gray-light,
+            $buttonSecondaryColor: $color-default,
+            $buttonTextColor: #fff,
+            $buttonSecondaryTextColor: #fff,
+            $buttonBorderColor: $color-gray-light,
+            $buttonSecondaryBorderColor: $color-default
+    );
+    width: 100%;
+    box-sizing: border-box;
+    
+    @if ($font-awesome-active == true) {
+        > * {
+            @include fa-inline-icon('\f093', $base-spacing-x-s);
+        }
+    }
+}
+
+#main .mod_article .qq-upload-list-selector {
+    list-style: none;
+    padding-left: 0;
+}
+.qq-upload-list li {
+    background-color: $color-gray-lighter;
+
+}
+.qq-upload-list li.qq-upload-success {
+    background-color: $color-default;
+}
+.qq-upload-list li {
+    
+}
+
+.qq-progress-bar {
+    background: linear-gradient(to bottom, $color-default 0,lighten($color-default, 10) 50%,lighten($color-default, 15) 51%,lighten($color-default, 20) 100%);
+}
+.widget-fineuploader {
+    margin-bottom: round($base-spacing-s * $gc);
+}

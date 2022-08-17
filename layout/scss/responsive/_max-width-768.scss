@@ -1,0 +1,51 @@
+@media screen and (max-width: 768px) {
+    // Stage
+    .custom > #stage .mod_article.article-image + .mod_article {
+        h1 {
+            font-size: 36px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    
+    // Left Column
+    body.layout-left {
+        #container {
+            padding-left: 0;
+        }
+
+        #left {
+            width: 100%;
+            right: auto;
+            margin-left: 0;
+
+            > .inside {
+                padding-right: 0;
+                
+                > *:first-child {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+    // Right Column
+    body.layout-right {
+        #container {
+            padding-right: 0;
+        }
+
+        #right {
+            width: 100%;
+            margin-right: 0;
+
+            > .inside {
+                padding-left: 0;
+
+                > *:first-child {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+}

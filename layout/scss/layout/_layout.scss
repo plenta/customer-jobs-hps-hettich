@@ -1,0 +1,55 @@
+#{$content-classes} {
+    width: 100%;
+    max-width: $content-width;
+    @include margin-auto;
+}
+
+// Article
+.mod_article {
+    @include mod_article_basic;
+}
+
+.gototop {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    margin-bottom: 34px;
+    opacity: 0;
+    z-index: 1;
+    @include animation('fade-out 1s');
+    @include keyframes(fade-out) {
+        0%      { opacity: 1; }
+        99%      { opacity: 0; }
+        100%    { display: none; }
+    }
+
+    &.show {
+        opacity: 1;
+        @include animation('fade-in 0.15s');
+        @include keyframes(fade-in) {
+            0%      { opacity: 0;  display: block; }
+            1%      { opacity: 0; }
+            100%    { opacity: 1; }
+        }
+    }
+    
+    @if ($font-awesome-active == true) {
+        a {
+            position: relative;
+            text-indent: -9999px;
+            color: $color-default;
+            display: block;
+            width: 30px;
+
+            &:before {
+                position: absolute;
+                left: 0;
+                text-indent: 0;
+                font-family: $fa;
+                font-weight: 900;
+                content: "\f077";
+                font-size: 30px;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+#header {
+    padding-top: $base-spacing-s;
+    padding-bottom: $base-spacing-s;
+
+    .inside {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            + * {
+                margin-left: auto;
+            }
+        }
+    }
+
+    .logo {
+        img {
+            width: var(--logo-width);
+            height: var(--logo-height);
+        }
+    }
+}

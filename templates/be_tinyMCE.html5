@@ -1,0 +1,7 @@
+<?php $this->extend('be_tinyMCE'); ?>
+<?php $this->block('content_css'); ?>
+    content_css: 'system/themes/<?= Backend::getTheme() ?>/tinymce.min.css<?= ",".$this->asset('plentatheme/tinymce.css', 'plentatheme') ?>',
+<?php $this->endblock(); ?>
+<?php $this->block('custom'); ?>
+<?php $this->parent(); ?>
+<?php $this->endblock(); ?>

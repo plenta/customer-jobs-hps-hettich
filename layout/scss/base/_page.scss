@@ -1,0 +1,12 @@
+:root {
+    --logo-ratio: #{$logo-ratio};
+    --logo-width: #{$logo-width};
+    --logo-height: calc(var(--logo-width) * var(--logo-ratio));
+}
+
+html {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $color-text;
+}

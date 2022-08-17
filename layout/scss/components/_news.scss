@@ -1,0 +1,14 @@
+.mod_newslist {
+    @include list-basic-div;
+}
+
+.mod_newsreader {
+    
+    > div > div {
+        margin-bottom: $base-spacing;
+
+        &.last {
+            margin-bottom: 0;
+        }
+    }
+}

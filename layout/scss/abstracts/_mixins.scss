@@ -1,0 +1,285 @@
+@use "sass:math";
+
+/// margin-auto
+@mixin margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/// Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+@mixin clear {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin navigation {
+    ul {
+        @include clear;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+
+/// Article
+@mixin mod_article_basic {
+    > .ce_headline, > div.last, &.last {
+        padding-bottom: 0;
+    }
+}
+
+/// Search
+@mixin search-header {
+    p.header {
+        border-top: $base-border;
+        border-bottom: $base-border;
+        padding: round(math.div($list-spacing, $gc))  $list-spacing;
+    }
+    
+    p.header + ul > li:first-child {
+        border-top: 0;
+    }
+}
+
+/// Mixin for old Jobs list style.
+@mixin list-basic-ul {
+    > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            border-bottom: $base-border;
+            padding: $list-spacing;
+            
+
+            &:first-child {
+                border-top: $base-border;
+            }
+
+            &.featured {
+                background-color: rgba($color-default, 0.1);
+            }
+            &:hover {
+                background-color: rgba($color-default, 0.15);
+            }
+        }
+    }
+}
+
+@mixin list-basic-div {
+    > div {
+        border-bottom: $base-border;
+        padding: $list-spacing;
+
+
+        &:first-child {
+            border-top: $base-border;
+        }
+
+        &.featured {
+            background-color: rgba($color-default, 0.1);
+        }
+        &.pagination {
+            border-bottom: 0;
+            
+            &:hover {
+                background: none;
+            }
+        }
+    }
+}
+
+/// Globale configuration for buttons
+@mixin button ($buttonColor:$color-default) {
+    background-color: $buttonColor;
+    padding: 0.5em 1em * $gc;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.4s background-color;
+    display: inline-block;
+    border-radius: $base-border-radius;
+    border: none;
+    text-decoration: none !important;
+    outline: none;
+
+    &:hover, &:focus, &:active {
+        text-decoration: none !important;
+        background-image: none;
+        background-position: 0;
+        transition: 0.15s background-color;
+    }
+}
+
+@mixin button-color (
+    $buttonColor: $color-default,
+    $buttonSecondaryColor: darken($color-default, 15),
+    $buttonTextColor: #fff,
+    $buttonSecondaryTextColor: #fff,
+    $buttonBorderColor: $color-default,
+    $buttonSecondaryBorderColor: darken($color-default, 15)
+) {
+    background-color: $buttonColor;
+    color: $buttonTextColor !important;
+    border: 1px solid $buttonBorderColor;
+
+    &:hover, &:focus, &:active {
+        background-color: $buttonSecondaryColor;
+        color: $buttonSecondaryTextColor !important;
+        border-color: $buttonSecondaryBorderColor;
+    }
+}
+
+@mixin jobs-list-headlines {
+    @extend %h3 !optional;
+}
+
+/// Animation Mixin useful for animating opacity and display togther
+/// 
+/// @example
+///     @include animation('fade-in 0.15s');
+///     @include keyframes(fade-in) {
+///         0%      { opacity: 0;  display: block; }
+///         1%      { opacity: 0; }
+///         100%    { opacity: 1; }
+///     }
+
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+// FontAwesome Mixins
+
+
+@mixin fa-inline-icon($faIcon, $padding:0.4em, $position:'before') {
+    @if ($font-awesome-active == true) {
+        @if ($position == 'after') {
+            &:after {
+                font-family: $fa;
+                font-weight: 900;
+                left: 0;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                display: inline-block;
+                padding-left: $padding;
+                content: "#{$faIcon}";
+            }
+        } @else {
+            &:before {
+                font-family: $fa;
+                font-weight: 900;
+                left: 0;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                display: inline-block;
+                padding-right: $padding;
+                content: "#{$faIcon}";
+            }
+        }
+    }
+}
+
+@mixin fa-icon-button($faIcon, $color:$color-default, $fontSize:1em, $width:1em) {
+    @if ($font-awesome-active == true) {
+        position: relative;
+        text-indent: -9999px;
+        color: $color;
+        display: block;
+        width: $fontSize + $fontSize * 0.2;
+
+        &:before {
+            position: absolute;
+            left: 1px; // Offset to avoid cut off icon
+            text-indent: 0;
+            font-family: $fa;
+            font-weight: 900;
+            content: "#{$faIcon}";
+            font-size: $fontSize;
+        }
+    }
+}
+
+@mixin fa-inline-brands($faIcon, $padding:0.4em, $position:'before') {
+    @if ($font-awesome-active == true) {
+        @if ($position == 'after') {
+            &:after {
+                font-family: $fa-brands;
+                font-weight: 400;
+                left: 0;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                display: inline-block;
+                padding-left: $padding;
+                content: "#{$faIcon}";
+            }
+        } @else {
+            &:before {
+                font-family: $fa;
+                font-weight: 400;
+                left: 0;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                display: inline-block;
+                padding-right: $padding;
+                content: "#{$faIcon}";
+            }
+        }
+    }
+}
+
+@mixin fa-brands-button($faIcon, $color:$color-default, $fontSize:1em, $width:1em) {
+    @if ($font-awesome-active == true) {
+        position: relative;
+        text-indent: -9999px;
+        color: $color;
+        display: block;
+        width: $fontSize + $fontSize * 0.2;
+
+        &:before {
+            position: absolute;
+            left: 1px; // Offset to avoid cut off icon
+            text-indent: 0;
+            font-family: $fa-brands;
+            font-weight: 400;
+            content: "#{$faIcon}";
+            font-size: $fontSize;
+        }
+    }
+}

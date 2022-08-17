@@ -1,0 +1,39 @@
+#stage {
+    .ce_sliderStart {
+        position: relative;
+    }
+    .slider-control {
+        position: static;
+        height: auto;
+        
+        a {
+            top: 50%;
+            transform: translateY(-50%);
+            text-decoration: none;
+            
+            &:hover {
+                cursor: pointer;
+            }
+            
+            @if ($font-awesome-active == true) {
+                &:before {
+                    font-family: $fa;
+                    font-weight: 900;
+                    font-size: 40px;
+                }
+                &.slider-prev:before {
+                    content: "\f053";
+                    margin-left: 20px;
+                }
+                &.slider-next:before {
+                    content: "\f054";
+                    margin-right: 20px;
+                }
+            }
+            
+        }
+    } 
+    .slider-menu {
+        display: none;
+    }
+}

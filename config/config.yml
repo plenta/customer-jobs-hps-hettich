@@ -1,0 +1,27 @@
+
+# Contao configuration
+contao:
+    url_suffix: ''
+
+    localconfig:
+        installPassword: '%env(INSTALL_PASSWORD)%'
+        adminEmail: '%env(ADMIN_EMAIL)%'
+        licenseAccepted: true
+        enableSearch: false
+        disableCron: true
+        folderUrl: true
+
+        dateFormat: 'd.m.Y'
+        datimFormat: 'd.m.Y H:i'
+        timeZone: 'Europe/Berlin'
+
+        # Adjust the upload image settings
+        maxFileSize: 20480000
+        imageWidth: 3000
+        imageHeight: 3000
+
+framework:
+    assets:
+        packages:
+            plentatheme:
+                json_manifest_path: '%kernel.project_dir%/public/layout/manifest.json'

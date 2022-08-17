@@ -1,0 +1,25 @@
+@use "sass:math";
+
+.ui-autocomplete {
+    width: 0;
+    background-color: #fff;
+    border: $base-border;
+    
+    li {
+        padding: round(math.div($base-spacing-s, 2)) $base-spacing-s ;
+    }
+    
+    li:hover {
+        background-color: $color-default;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.ui-autocomplete-input {
+    outline: none;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}

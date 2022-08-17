@@ -1,0 +1,126 @@
+@use "sass:math";
+//
+// VARIABLES
+// --------------------------------------------------
+
+// General Colors
+$color-default:         #327fb4;
+$color-gray-dark:       #222;
+$color-gray:            #424242;
+$color-gray-light:      #ccc;
+$color-gray-lighter:    #eee;
+$color-alert:           #ff0000;
+
+
+// Base Font Settings
+$base-font-size:          16px;
+
+$base-line-height:        1.6;
+
+$load-fonts: (
+    Open_Sans: (
+        Light-300: false,
+        Light-300i: false,
+        Regular-400: true,
+        Regular-400i: true,
+        SemiBold-600: false,
+        SemiBold-600i: false,
+        Bold-700: true,
+        Bold-700i: false,
+        ExtraBold-800: false,
+        ExtraBold-800i: false
+    ) /*
+    Roboto: (
+        Thin-100: true,
+        Thin-100i: true,
+        ExtraLight-200: true,
+        ExtraLight-200i: true,
+        Light-300: true,
+        Light-300i: true,
+        Regular-400: true,
+        Regular-400i: true,
+        Medium-500: true,
+        Medium-500i: true,
+        SemiBold-600: true,
+        SemiBold-600i: true,
+        Bold-700: true,
+        Bold-700i: true,
+        ExtraBold-800: true,
+        ExtraBold-800i: true,
+        Black-900: true,
+        Black-900i: true
+    )*/
+);
+$base-font-family:        "Open Sans", "Helvetica", sans-serif;
+
+$color-text:              $color-gray;
+
+$font-awesome-active: true; // Activate Fontawesome. base/_fonts.scss must be included.
+$fa: 'Font Awesome 5 Free';
+$fa-brands: 'Font Awesome 5 Brands';
+
+// Font weight
+$font-weight-thin:          100;
+$font-weight-extra-light:   200;
+$font-weight-light:         300;
+$font-weight-regular:       400;
+$font-weight-medium:        500;
+$font-weight-semi-bold:     600;
+$font-weight-bold:          700;
+$font-weight-extra-bold:    800;
+$font-weight-black:         900;
+
+// Links
+$color-links: $color-default;
+
+// Buttons
+$color-btn:       $color-links;
+$color-btn-text:  #fff;
+
+// Spacing
+
+$gc: 1.618;
+
+// Spacing is a progression of golden ratios based on the $base-font-size.
+/// Base-Spacing: 26px
+$base-spacing:          round($base-font-size * $base-line-height); // 26px
+
+$base-spacing-large:    round($base-spacing * $gc); // 42px
+
+/// Spacing layout elements. e.g. space between two mod_articles. 68px 
+$base-spacing-x-large:  round($base-spacing-large * $gc);
+$base-spacing-xx-large: round($base-spacing-x-large * $gc); // 110px
+
+$base-spacing-s:        $base-font-size; // 16px Spacing inside of elements. e.g. space between pagination and preceded ul of mod_event_list.
+$base-spacing-x-s:      round(math.div($base-font-size, $gc)); // 10px
+$base-spacing-xx-s:     round(math.div($base-spacing-x-s, $gc)); // 6px
+
+$gallery-spacing: $base-spacing; // Spacing between gallery thumbnails.
+
+//Legacy Spacing
+$base-spacing-half: round(math.div($base-spacing, 2));
+$base-spacing-gc: round($base-spacing * 0.618);
+// Legacy Spacing END
+
+// List Spacing
+$list-spacing: $base-spacing-s;
+
+// Border
+$base-border-color: $color-gray-lighter;
+$base-border-style: solid;
+$base-border-width: 1px;
+
+$base-border: $base-border-width $base-border-style $base-border-color;
+$base-border-radius: 2px;
+
+// Layout
+$content-width: 1300px;
+$content-padding-first-break-point: 20px; // used to set the first breakpoint dynamically
+$content-classes: '#header .inside, #footer .inside, #main .inside-article'; // other classes: inside-article, inside-x
+
+$left-column-width: 300px;
+$right-column-width: 250px;
+
+$logo-ratio: math.div(44,156); // ratio = height/width;
+$logo-width: 200px;
+

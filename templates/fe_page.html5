@@ -1,0 +1,10 @@
+<?php $this->extend('fe_page') ?>
+<?php $this->block('head') ?>
+<?php $this->robots = 'noindex, nofollow' ?>
+<?php $this->parent() ?>
+    <link rel="stylesheet" href="/<?= $this->asset('plentatheme/layout.css', 'plentatheme') ?>">
+    <script src="/<?= $this->asset('plentatheme/layout.js', 'plentatheme') ?>" defer></script>
+    <link rel="preload" href="/<?= $this->asset('plentatheme/fonts/OpenSans-Regular.woff', 'plentatheme') ?>" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="/<?= $this->asset('plentatheme/fonts/fa-regular-400.woff2', 'plentatheme') ?>" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/<?= $this->asset('plentatheme/fonts/fa-solid-900.woff2', 'plentatheme') ?>" as="font" type="font/woff2" crossorigin>
+<?php $this->endblock() ?>

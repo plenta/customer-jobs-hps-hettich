@@ -1,0 +1,6 @@
+module.exports = {
+    BrowserSyncProxy: 'https://abc.plentarium.com',
+    BrowserSyncBrowser: 'Brave browser',
+    BrowserSyncHost: 'localhost',
+    BrowserSyncPort: 3000
+};

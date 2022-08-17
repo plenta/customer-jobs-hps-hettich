@@ -1,0 +1,27 @@
+#main, #left, #right, .custom #intro {
+    .ce_text, .ce_list {
+        ul {
+            padding-left: 1.2em;
+            
+            @if ($font-awesome-active == true) {
+                li {
+                    position: relative;
+                    
+                    &:before {
+                        font-family: $fa;
+                        font-weight: 900;
+                        content: "\f101";
+                        color: $color-default;
+                        position: absolute;
+                        left: -1.1em;
+                    }
+                } 
+            } @else {
+                list-style: disc;
+            }
+        }
+        ol {
+            padding-left: 1.5em;
+        }
+    }
+}

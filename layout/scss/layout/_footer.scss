@@ -1,0 +1,19 @@
+// Footer
+#footer {
+    border-top: 2px solid $color-default;
+
+    .inside {
+        padding-top: $base-spacing-s;
+        padding-bottom: $base-spacing-s;
+        display: flex;
+        justify-content: space-between;
+
+        > * {
+            margin-right: $base-spacing-large;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

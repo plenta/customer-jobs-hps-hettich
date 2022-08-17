@@ -1,0 +1,87 @@
+
+// Stage
+.custom > #stage {
+    background-color: $color-default;
+    background: linear-gradient(-28deg, hsl(hue($color-default), saturation($color-default) * 1.1, lightness($color-default) * 0.9), hsl(hue($color-default), saturation($color-default) * 0.9, lightness($color-default)));
+    color: #fff;
+    text-align: center;
+    
+    a {
+        color: #fff;
+        text-decoration: underline;
+        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
+    .inside {
+        position: relative;
+    }
+    
+    .mod_article {
+        max-width: $content-width;
+        margin: auto;
+        &.first {
+            padding-top: 60px;
+        }
+        &.last {
+            padding-bottom: 60px;
+        }
+    }
+    .mod_article.article-image {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        max-width: none;
+        //max-height: 700px;
+        padding-top: 0;
+        padding-bottom: 0;
+        
+        img {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .image_container {
+            width: 100%;
+            padding-bottom: 36%;
+            position: relative;
+            .caption {
+                display: none;
+            }
+        }
+        
+        & + .mod_article {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            
+            .ce_headline, > * > * {
+                padding-left: 7px;
+                padding-right: 7px;
+                padding-top: 0;
+                margin-bottom: 7px;
+            }
+            .ce_text {
+                padding-bottom: 34px;
+            }
+
+            h1 {
+                font-size: 68px;
+                font-weight: 300;
+            }
+            p {
+                font-size: 26px;
+            }
+
+            &.last {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}

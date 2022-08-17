@@ -1,0 +1,71 @@
+.ce_gallery {
+    ul {
+        @at-root .disable-fixed-width#{&} {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin: round(- $gallery-spacing / 2);
+
+            li {
+                padding: round($gallery-spacing / 2);
+                box-sizing: border-box;
+            }
+        }
+
+        @at-root div:not(.disable-fixed-width)#{&} {
+            display: grid;
+            grid-gap: $gallery-spacing;
+
+            $i: 1;
+            @while $i <= 12 {
+                &.cols_#{$i} {
+                    grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+                }
+
+                $i: $i + 1;
+            }
+
+            @media screen and (max-width: $content-width) {
+                &.cols_12, &.cols_10, &.cols_9 {
+                    grid-template-columns: repeat(8, minmax(0, 1fr));
+                }
+            }
+
+            @media screen and (max-width: 1024px) {
+                &.cols_12, &.cols_10, &.cols_9, &.cols_8 {
+                    grid-template-columns: repeat(6, minmax(0, 1fr));
+                }
+
+                &.cols_7, &.cols_6, &.cols_5 {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+            }
+
+            @media screen and (max-width: 860px) {
+                &.cols_12, &.cols_10, &.cols_9, &.cols_8 {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+
+                &.cols_7, &.cols_6, &.cols_5, &.cols_4 {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+            }
+
+            @media screen and (max-width: 620px) {
+                &.cols_12, &.cols_10, &.cols_9, &.cols_8 {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+
+                &.cols_7, &.cols_6, &.cols_5, &.cols_4, &.cols_3 {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media screen and (max-width: 420px) {
+                &.[class*='cols_'] {
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
+                }
+            }
+        }
+    }
+}

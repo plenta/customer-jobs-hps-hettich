@@ -1,0 +1,5 @@
+@media screen and (max-width: #{$content-padding-first-break-point * 2 + $content-width}) {
+    #{$content-classes} {
+        width: calc(100% - #{$content-padding-first-break-point * 2});
+    }
+}

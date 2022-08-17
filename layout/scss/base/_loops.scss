@@ -1,0 +1,14 @@
+@for $i from 0 through 20 {
+    .margin-bottom-#{$i*5} {
+        margin-bottom: 5px * $i !important;
+    }
+    .margin-top-#{$i*5} {
+        margin-top: 5px * $i !important;
+    }
+    .margin-right-#{$i*5} {
+        margin-right: 5px * $i !important;
+    }
+    .margin-left-#{$i*5} {
+        margin-left: 5px * $i !important;
+    }
+}

@@ -1,0 +1,23 @@
+.mejs-container {
+    width: 100% !important;
+    height: auto !important;
+    padding-top: 57%;
+}
+
+.mejs-overlay,
+.mejs-poster {
+    width: 100% !important;
+    height: 100% !important
+}
+
+.mejs-mediaelement video,
+.mejs-mediaelement .me-plugin,
+.mejs-mediaelement embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
