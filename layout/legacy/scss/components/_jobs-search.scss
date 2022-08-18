@@ -1,0 +1,12 @@
+.mod_job_search, .mod_job_request_search {
+    @include search-header;
+    //@include list-basic-div;
+    
+    .widget-checkbox fieldset > span {
+        display: block;
+    }
+    
+    &.search-results-only form{
+        display: none;
+    }
+}

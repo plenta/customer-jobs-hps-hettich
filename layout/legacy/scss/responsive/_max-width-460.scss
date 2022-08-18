@@ -1,0 +1,51 @@
+@media screen and (max-width: 460px) {
+    #header .inside {
+        .logo {
+            margin-left: 10px;
+            
+            img {
+                max-width: 250px;
+            }
+        }
+    }
+    .nav_toggle {
+        right: 10px;
+    }
+    #container .inside > *:first-child {
+        padding-top: $base-spacing / 2;
+    }
+    body.layout-left #main .inside, body.layout-left #left > .inside, #footer .inside {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .custom > #stage {
+        
+        .inside {
+        
+            > *:first-child {
+                padding-top: $base-spacing / 2;
+            }
+            > *:last-child {
+                padding-bottom: $base-spacing / 2;
+            }
+        }
+        .mod_job_offer_autocomplete {
+            .formbody {
+                display: block;
+            }
+            input {
+                display: block;
+                width: 100%;
+            }
+            input[type=submit] {
+                margin-left: 0;
+                margin-top: $base-spacing--s;
+            }
+        }
+    }
+    
+    .mod_article > *{
+        padding-bottom: $base-spacing / 2;
+    }
+}

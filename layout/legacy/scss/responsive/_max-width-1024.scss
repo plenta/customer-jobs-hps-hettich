@@ -1,0 +1,102 @@
+@media screen and (max-width: 1024px) {
+    // Left Column
+    $left-column-width: 300px;
+    body.layout-left {
+        #container {
+            padding-left: $left-column-width;
+        }
+
+        #left {
+            width: $left-column-width;
+            right: $left-column-width;
+
+            > .inside {
+                padding-right: $base-spacing--s * 2;
+            }
+        }
+    }
+    
+// Mobile Navigation Start
+
+    .mainmenu {
+        position: absolute;
+        bottom: 0;
+        z-index: 1000;
+        transform: translateY(100%);
+        background-color: rgba(255,255,255,0.99);
+        margin-top: $base-spacing--s;
+        overflow: auto;
+        width: 100%;
+        margin-left: -10px;
+        display: none;
+        
+        a, span {
+            display: block;
+            padding: $base-spacing--s / $gc $base-spacing--s;
+            border-bottom: $base-border;
+        }
+        
+        ul.level_1 > li {
+            float: none;
+            margin: 0;
+        
+            &.submenu ul {
+                display: block;
+                position: static;
+                padding: 0;
+                background-color: transparent;
+            }
+            
+            
+            &.last {
+                a, span {
+                    border-bottom-color: $color-default;
+                    border-bottom-width: 2px;
+                }
+            }
+            
+            &.first {
+                a, span {
+                    border-top-color: $color-default;
+                    border-top-width: $base-border-width;
+                    border-top-style: $base-border-style;
+                }
+            }
+        }
+        ul.level_2 {
+            a, span {
+               padding-left: $base-spacing--s * 2; 
+            }
+        }
+    }
+    .nav_toggle {
+        right: 34px;
+        top: 50%;
+        transform: translateY(-50%);
+        position:absolute;
+        display:block;
+        z-index: 1001;
+        
+        &:after {
+            display:block;
+            font:36px FontAwesome;
+            content: "\f0c9";
+        }
+    }
+    .nav_checkbox:checked {
+        ~ .nav_toggle {
+            
+            &:after {
+                content: "\f00d";
+            }
+        }
+        ~ .mainmenu {
+            display: block;
+        }
+    }
+    
+    input[type=checkbox] + label.nav_toggle:before {
+        display: none;
+    }
+// Mobile Navigation End
+}

@@ -1,0 +1,98 @@
+.mod_job_offer_manager, .mod_job_request_manager {
+    
+    @include mod_article_basic;
+    
+    .new_job{
+        padding-bottom: $base-spacing / 2;
+        
+        a {   
+            @include button;
+        }
+    }
+    
+    .job_manager_intro {
+        padding-bottom: $base-spacing / 2;
+    }
+    
+    > div {
+        
+        @include list-basic-div;
+        
+        > div.first {
+        border-top: $base-border;
+        margin-top: $base-spacing--s * $gc;
+        }
+    }
+    
+    .job_edit_wrapper {
+        margin-top: $base-spacing--s;
+    }
+    
+    .job_reject_reason {
+        margin-bottom: $base-spacing--s;
+    }
+    
+    
+        
+    @if ($font-awesome-active == true) {
+        
+        .job {
+            
+            padding-right: 100px + $base-spacing--s;
+            @include clear;
+            
+
+            > * {
+                float: left;
+            }
+            
+            .job_info {
+                width: 100%;
+            }
+            .job_edit_wrapper {
+                width: 100px;
+                margin-right: -100%;
+                margin-top: 0;
+                
+                a {
+                    position: relative;
+                    text-indent: -99999px;
+                    display: inline-block;
+                    padding-right: $base-spacing--s / 4;
+                    width: 1.2em;
+                    text-align: center;
+                    font-size: 1.2em;
+                    
+                    &:before {
+                        font-family: FontAwesome;
+                        position: absolute;
+                        left: 0;
+                        text-indent: 0;
+                        width: 1.2em;
+                    }
+                    &.edit_job:before {
+                            content: "\f040"; 
+                    }
+                    &.stop_job:before {
+                            content: "\f00d"; 
+                    }
+                    &.view_job:before {
+                            content: "\f06e"; 
+                    }
+                }
+            }
+        }
+    } 
+    @else {
+        .job_edit_wrapper a {
+            
+            &:after {
+            content:" | ";
+            }
+                
+            &:last-child:after {
+                    content:"";
+            }
+        }
+    } 
+}

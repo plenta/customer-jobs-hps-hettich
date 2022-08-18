@@ -1,0 +1,187 @@
+a.button,
+.ce_hyperlink.button a,
+input.submit {
+    @include button;
+}
+
+// FontAwesome CSS must have been loaded!
+
+.fa-x-1 {
+    &:before {
+        display: inline-block;
+        font-family: FontAwesome;
+        line-height: 1;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+    
+    &.ce_hyperlink.button {
+        position: relative;
+        
+        &:before {
+            position: absolute;
+            padding-top: .5em;
+            padding-bottom: .5em;
+            padding-left: .8em;
+            line-height: 1.3em;
+            color: #fff;
+            font-size: inherit;
+        } 
+        
+        a {
+            padding-left: 2.1em;
+        }
+    }    
+}
+/*
+a.button.fa-x-1:before {
+    padding-right: .6em
+}
+
+.submit_container.fa-x-2, .ce_hyperlink.fa-x-2, a.fa-x-2{
+    
+    &:before {
+        content: "\f0a9";
+        width: 1.8em;
+        left: 0;
+        top: 0;
+        position: absolute;
+        display: inline-block;
+        padding: .55em 0;
+        text-align: center;
+        background-color: #1C60A2;
+        font: 1.5em FontAwesome;
+        line-height: inherit;
+    }
+    
+    input.submit, a %a.fa-x-2 {
+        display: inline-block;
+        padding: .8em .5em .8em 3.2em;
+        background-color: #1C60A2;
+        border: 0;
+        background-image: none;
+        outline: none;
+        color: inherit;
+        transition: 0.4s $color-default
+    }
+}
+a.fa-x-2 {
+    @extend %a.fa-x-2;
+}
+
+
+.submit_container.fa-x-2:hover input.submit,
+.ce_hyperlink.fa-x-2:hover a,
+.ce_hyperlink.fa-x-2 a:hover,
+a.fa-x-2:hover {
+    background-color: #1C60A2;
+    text-decoration: none;
+    transition: 0.15s $color-default
+}
+
+*/
+
+/*
+a.button:hover,
+a.button:focus,
+a.button:active,
+.ce_hyperlink.button a:hover,
+.ce_hyperlink.button a:focus,
+.ce_hyperlink.button a:active,
+.submit_container input.submit:hover,
+.submit_container input.submit:active,
+.submit_container input.submit:focus {
+    background-color: $color-default;
+    text-decoration: none;
+    color: #fff;
+    background-image: none;
+    background-position: 0 !important;
+    transition: 0.15s $color-default
+}
+
+.fa-x-1:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    line-height: 1;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.fa-x-2:before {
+    content: "\f0a9"
+}
+
+.ce_hyperlink.button.fa-x-1 {
+    position: relative
+}
+
+.ce_hyperlink.button.fa-x-1:before {
+    position: absolute;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: .8em;
+    line-height: 1.3em;
+    color: #fff;
+    font-size: inherit
+}
+
+.ce_hyperlink.button.fa-x-1 a {
+    padding-left: 2.1em
+}
+
+a.button.fa-x-1:before {
+    padding-right: .5em
+}
+.submit_container.fa-x-2,
+.ce_hyperlink.fa-x-2,
+a.fa-x-2 {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: .875rem;
+    line-height: 1.4em;
+    color: #fff
+}
+
+.submit_container.fa-x-2:before,
+.ce_hyperlink.fa-x-2:before,
+a.fa-x-2:before {
+    width: 1.8em;
+    left: 0;
+    top: 0;
+    position: absolute;
+    display: inline-block;
+    padding: .55em 0;
+    text-align: center;
+    background-color: #1C60A2;
+    font: 1.5em FontAwesome;
+    line-height: inherit
+}
+
+.submit_container.fa-x-2 input.submit,
+.ce_hyperlink.fa-x-2 a,
+a.fa-x-2 {
+    display: inline-block;
+    padding: .8em .5em .8em 3.2em;
+    background-color: #1C60A2;
+    border: 0;
+    background-image: none;
+    outline: none;
+    color: inherit;
+    transition: 0.4s $color-default
+}
+
+.submit_container.fa-x-2:hover input.submit,
+.ce_hyperlink.fa-x-2:hover a,
+.ce_hyperlink.fa-x-2 a:hover,
+a.fa-x-2:hover {
+    background-color: #1C60A2;
+    text-decoration: none;
+    transition: 0.15s $color-default
+}
+
+a.fa-x-2 {
+    color: #fff
+}*/

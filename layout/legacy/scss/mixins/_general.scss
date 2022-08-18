@@ -1,0 +1,126 @@
+// margin-auto
+@mixin margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+@mixin clear {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin navigation {
+    ul {
+        @include clear;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+
+// Article
+@mixin mod_article_basic {
+    > * {
+        padding-bottom: $base-spacing;
+        
+        &.ce_headline {
+            padding-bottom: 0;
+        }
+        
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+}
+
+// Search
+@mixin search-header {
+    p.header {
+        border-top: $base-border;
+        border-bottom: $base-border;
+        padding:$list-spacing / $gc  $list-spacing;
+    }
+    
+    p.header + ul > li:first-child {
+        border-top: 0;
+    }
+}
+
+// Mixin for old Jobs list style.
+@mixin list-basic-ul {
+    > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            border-bottom: $base-border;
+            padding: $list-spacing;
+            
+
+            &:first-child {
+                border-top: $base-border;
+            }
+
+            &.featured {
+                background-color: rgba($color-default, 0.1);
+            }
+            &:hover {
+                background-color: rgba($color-default, 0.15);
+            }
+        }
+    }
+}
+
+@mixin list-basic-div {
+    > div {
+        border-bottom: $base-border;
+        padding: $list-spacing;
+
+
+        &:first-child {
+            border-top: $base-border;
+        }
+
+        &.featured {
+            background-color: rgba($color-default, 0.1);
+        }
+        /*&:hover {
+            background-color: rgba($color-default, 0.15);
+        }*/
+        &.pagination {
+            border-bottom: 0;
+            
+            &:hover {
+                background: none;
+            }
+        }
+    }
+}
+
+@mixin button {
+    background-color: $color-default;
+    padding: $base-spacing--s / $gc $base-spacing--s * $gc;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.4s background-color;
+    display: inline-block;
+    //border-radius: $base-border-radius;
+
+    &:hover, &:focus, &:active {
+        background-color: hsl(hue($color-default), saturation($color-default) * 1.1, lightness($color-default) * 0.9);
+        text-decoration: none;
+        background-image: none;
+        background-position: 0 !important;
+        transition: 0.15s background-color;
+    }
+}
+
+@mixin jobs-list-headlines {
+    @extend %h3 !optional;
+}

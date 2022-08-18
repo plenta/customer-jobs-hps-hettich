@@ -1,0 +1,61 @@
+/** 
+  * Jobbörse Software - Base Framework
+  */
+  
+//
+// VARIABLES
+// --------------------------------------------------
+
+// General Colors
+$color-default:         #3078BE !default;
+$color-default-2:       #003875 !default;
+$color-gray-dark:       #212121 !default;
+$color-gray:            #BFBEBE !default;
+$color-gray-light:      #eaeaea !default;
+$color-gray-lighter:    #eaeaea !default;
+
+
+// Base Font Settings
+$base-font-size:          14px !default;
+
+$base-line-height:        1.6 !default;
+
+$base-font-family:        "Open Sans", "Verdana", "Helvetica", sans-serif !default;
+
+$color-text:              $color-gray-dark !default;
+
+$font-awesome-active: true; // Activate Fontawesome. base/_fonts.scss must be included.
+
+
+// Links
+$color-links: $color-default !default;
+
+// Buttons
+$color-btn:       $color-links;
+$color-btn-text:  #fff !default;
+
+// Spacing
+$base-spacing: 80px; // Spacing layout elements. e.g. space between two mod_articles.
+
+$base-spacing-half: $base-spacing / 2;
+$base-spacing-gc: $base-spacing * 0.618;
+
+$base-spacing--s: 15px; // Spacing inside of elements. e.g. space between pagination and preceeded ul of mod_event_list.
+
+$gc: 1.618;
+
+// List Spacing
+$list-spacing: $base-spacing--s;
+
+// Border
+$base-border-color: $color-gray-lighter;
+$base-border-style: solid;
+$base-border-width: 1px;
+
+$base-border: $base-border-width $base-border-style $base-border-color;
+$base-border-radius: 4px;
+
+// Jobs
+$logo-portrait-width-list: 100px;
+$logo-portrait-width-reader: 300px;
+

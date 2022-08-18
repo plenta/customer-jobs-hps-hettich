@@ -1,0 +1,30 @@
+// Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+.clear {
+    @include clear;
+}
+
+
+// hyperlink
+a {
+  color: $color-links;
+}
+
+:not(p) a {
+  text-decoration: none;
+}
+
+
+// images
+figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+p.back {
+    margin-top: $base-spacing / 2;
+}

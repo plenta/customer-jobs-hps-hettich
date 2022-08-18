@@ -1,0 +1,231 @@
+#header .inside, #footer .inside, #container, #stage .inside {
+    width: 100%;
+    max-width: 980px;
+    @include margin-auto;
+}
+
+#wrapper {
+    background-color: $color-gray-light;
+}
+
+#header, #footer, #container {
+    background-color: #fff;
+}
+
+// Header
+$header-height: 170px;
+
+#header {
+    //@include box-shadow;
+    position: relative;
+    
+    .inside {
+        height: $header-height;
+        
+        > * {
+            float:left;
+        }
+        > *:last-child {
+            float: right;
+        }
+        @include clear;
+        .logo {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: $header-height - 18px;
+            
+            a {
+                vertical-align: middle;
+                display: inline-block;
+            }
+            
+            img {
+                max-height: $header-height - 18px;
+            }
+        }
+    }
+}
+
+//Stage
+.custom > #stage {
+    background-color: $color-default;
+    background: linear-gradient(-28deg, hsl(hue($color-default), saturation($color-default) * 1.1, lightness($color-default) * 0.9), hsl(hue($color-default), saturation($color-default) * 0.9, lightness($color-default)));
+    color: #fff;
+    text-align: center;
+    
+    a {
+        color: #fff;
+        text-decoration: underline;
+        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
+    .inside {
+        position: relative;
+        
+        > *:first-child {
+            padding-top: $base-spacing;
+        }
+        > *:last-child {
+            padding-bottom: $base-spacing;
+        }
+    }
+    
+    .mod_job_offer_autocomplete {
+        .formbody {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        input {
+            display: inline-block;
+        }
+        
+        input[type=search] {
+            max-width: 500px;
+        }
+        input[type=submit] {
+            margin-left: $base-spacing--s;
+            border: 1px solid #fff;
+            transition: all 0.3s;
+            background-color: rgba($color-default, 0);
+            
+            &:hover {
+                background-color: hsl(hue($color-default), saturation($color-default) * 1.1, lightness($color-default) * 0.9);
+            }
+        }
+    }
+}
+
+// Container
+#container {
+    .inside {
+        > *:first-child {
+            padding-top: 35px;
+        }
+        > *:last-child {
+            padding-bottom: 35px;
+        }
+        
+        p a {
+            text-decoration: underline;
+            
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    .mod_article.first > *:first-child, .mod_article.first > *:first-child > *:first-child {
+        margin-top: 0;
+    }
+}
+
+// Left Column
+$left-column-width: 320px;
+body.layout-left {
+    #container {
+        padding-left: $left-column-width;
+        box-sizing: border-box;
+        
+        @include clear;
+    }
+    #main {
+        float: left;
+        position: relative;
+        width: 100%;
+        
+        .inside {
+            padding-right: 34px;
+        }
+    }
+
+    #left {
+        position: relative;
+        float: left;
+        margin-left:  -100%;
+        width: $left-column-width;
+        right: $left-column-width;
+        
+        font-size: 13px;
+        
+        > .inside {
+            padding-right: 34px;
+            padding-left: 34px;
+        }
+    }
+}
+
+// Footer
+#footer {
+    //border-top: 2px solid $color-default;
+    
+    .inside {
+        padding-top: $base-spacing--s;
+        padding-bottom: $base-spacing--s;
+        padding-left: 35px;
+        padding-right: 35px;
+        text-align: center;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .icon-twitter, .icon-facebook, .icon-googleplus, .icon-social, .social-icons a {
+        position: relative;
+        height: 2em;
+        width: 2em;
+        display: inline-block;
+        text-indent: -99999px;
+        padding-right: 10px;
+        
+        &:last-child {
+            padding-right: 0;
+        }
+        /*
+        &:before {
+            position: absolute;
+            font-family: Fontawesome;
+            text-indent: 0;
+            left: 0;
+            color: #fff;
+            display: inline-block;
+            width: 2em;
+            height: 2em;
+            background-color: $color-gray-dark;
+            border-radius: 100%;
+            line-height: 2em;
+        }*/
+    }/*
+    .icon-twitter:before {
+        content: "\f099";
+    }
+    .icon-facebook:before {
+        content: "\f09a";
+    }
+    .icon-googleplus:before {
+        content: "\f0d5";
+    }*/
+    
+    a {
+        text-decoration: underline;
+        color: $color-text;
+    }
+    
+}
+
+// Article
+.mod_article {
+    @include mod_article_basic;
+}
+
+.layout-jobs-details {
+    #main .inside {
+        padding-left: 35px;
+        padding-right: 35px;
+        .mod_article {
+            width: 100%;
+        }
+    }
+}

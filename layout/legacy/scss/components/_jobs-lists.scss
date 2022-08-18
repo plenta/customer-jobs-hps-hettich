@@ -1,0 +1,181 @@
+// Mixin for Lists with Logos/Portaits to use for "mod_job_request_list" and "mod_job_offer_list".
+@mixin jobs-list-layout-logo-portrait { 
+    position: relative;
+    padding-left: $logo-portrait-width-list + $list-spacing + $list-spacing * $gc + 10px;
+    min-height: $logo-portrait-width-list + 10px;
+    
+    border: $base-border-width $base-border-style $color-default;
+    
+    margin-bottom: 35px;
+    
+    .image {
+        position: absolute;
+        left: $list-spacing;
+        top: $list-spacing;
+        
+        a {
+            display: block;
+            width: $logo-portrait-width-list;
+            height: $logo-portrait-width-list;
+            border: $base-border;
+            padding: 5px;
+            background-color: #fff;
+        }
+        
+        img {
+            max-width: $logo-portrait-width-list;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .headline a {
+        @include jobs-list-headlines;
+        margin-bottom: 8px;
+    }
+    
+    .meta {
+        span {
+            display: inline-block;
+            margin-right: $list-spacing * $gc;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+            
+            &:before {
+                font-family: 'FontAwesome';
+                display: inline-block;
+                padding-right: $list-spacing / $gc;
+            }
+            
+            &.city:before {
+                content: "\f041";
+            }
+            &.type:before {
+                content: "\f017";
+            }
+        }
+        .publishedDate {
+            display: block;
+            padding-bottom: 1em;
+        }
+    }
+    .meta, .teaser {
+        padding-bottom: 1em;
+    }
+    
+    .button {
+        background-color: transparent;
+        color: $color-default;
+        border: $base-border-style $base-border-width $color-default;
+        border-radius: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .category {
+        background-color: $color-default;
+        color: #fff;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+}
+
+.mod_job_offer_list, .mod_job_request_list, .mod_job_offer_list_dynamic {
+    @include list-basic-div;
+}
+
+@mixin jobs-list-layout-short { // Mixin for Short-Lists to use for "mod_job_request_list" and "mod_job_offer_list".
+    a {
+        @include jobs-list-headlines;
+        margin-bottom: $list-spacing / 2;
+    }   
+}
+
+
+.mod_job_offer_list, .mod_job_offer_list_dynamic, .mod_job_search {
+    > div {
+        &.layout_logo {
+            @include jobs-list-layout-logo-portrait;
+        }
+        &.layout_short {
+            @include jobs-list-layout-short;
+        }
+        &.layout_no_logo { 
+            position: relative;
+            //padding-left: $logo-portrait-width-list + $list-spacing + $list-spacing * $gc + 10px;
+            //min-height: $logo-portrait-width-list + 10px;
+
+            //border: $base-border-width $base-border-style $color-default;
+
+            //margin-bottom: 25px;
+
+            .headline a {
+                @include jobs-list-headlines;
+                margin-bottom: 8px;
+            }
+
+            .meta {
+                span {
+                    display: inline-block;
+                    margin-right: $list-spacing * $gc;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &:before {
+                        font-family: 'FontAwesome';
+                        display: inline-block;
+                        padding-right: $list-spacing / $gc;
+                    }
+
+                    &.city:before {
+                        content: "\f041";
+                    }
+                    &.type:before {
+                        content: "\f017";
+                    }
+                }
+                .publishedDate {
+                    display: block;
+                    padding-bottom: 1em;
+                }
+            }
+            .teaser {
+                padding-bottom: 0.8em;
+            }
+
+            .button {
+                background-color: transparent;
+                color: $color-default;
+                border: $base-border-style $base-border-width $color-default;
+                border-radius: 0;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .category {
+                background-color: $color-default;
+                color: #fff;
+                padding-left: 8px;
+                padding-right: 8px;
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+            
+        }
+    }
+}
+.mod_job_request_list, .mod_job_request_search {
+   > div {
+        &.layout_portrait {
+            @include jobs-list-layout-logo-portrait;
+        }
+        &.layout_short {
+            @include jobs-list-layout-short;
+        }
+    }
+}

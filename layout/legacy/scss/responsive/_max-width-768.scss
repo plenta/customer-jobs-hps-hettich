@@ -1,0 +1,39 @@
+@media screen and (max-width: 768px) {
+    
+    #header .inside .logo {
+        margin-left: 34px;
+    }
+    // Left Column
+    $left-column-width: 250px;
+    body.layout-left {
+        #container {
+            padding-left: 0;
+        }
+        
+        #main .inside {
+            padding-left: 34px;
+        }
+
+        #left {
+            width: 100%;
+            right: auto;
+            margin-left: 0;
+
+            > .inside {
+                padding-right: 34px;
+                
+                > *:first-child {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+    
+    #footer .inside {
+        flex-direction: column;
+        
+        > * {
+            padding-bottom: 10px;
+        }
+    }
+}

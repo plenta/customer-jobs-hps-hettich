@@ -1,0 +1,70 @@
+/** 
+  * Jobbörse Software - Base Framework
+  */
+  
+// SETTINGS
+@import "variables";
+
+
+// Mixins
+@import "mixins/general";
+@import "mixins/project";
+//@import "mixins/responsive";
+
+
+// GENERIC
+@import "generic/normalize";
+@import "generic/contao-reset";
+@import "generic/reset";
+// @import "generic/box-sizing";
+
+
+// BASE
+@import "base/fonts";
+@import "base/shared";
+@import "base/page";
+@import "base/type";
+//@import "base/grid";
+@import "base/layout";
+
+
+// COMPONENTS
+@import "components/buttons";
+//@import "components/media";
+//@import "components/links";
+@import "components/navs";
+//@import "components/slider";
+//@import "components/news";
+//@import "components/events";
+@import "components/forms";
+//@import "components/accordion";
+//@import "components/downloads";
+//@import "components/tables";
+//@import "components/newsletter";
+//@import "components/faq";
+//@import "components/comments";
+@import "components/search";
+@import "components/ui-autocomplete";
+@import "components/list";
+
+//Jobs
+@import "components/jobs-settings";
+@import "components/jobs-lists";
+@import "components/jobs-reader";
+@import "components/jobs-search";
+@import "components/jobs-offer-request-manager";
+@import "components/jobs-subscriptions";
+
+//Third-Party
+//@import "../fonts/fontawesome/scss/font-awesome";
+@import "vendor/selectric-custom";
+@import "vendor/rs-columns";
+    
+// RESPONSIVE
+@import "responsive/max-width-1160";
+@import "responsive/max-width-1024";
+@import "responsive/max-width-768";
+@import "responsive/max-width-460";
+
+@import "responsive/jobs-max-width-768";
+@import "responsive/jobs-max-width-460";

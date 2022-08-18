@@ -1,0 +1,26 @@
+@media screen and (max-width: 460px) {
+    .mod_job_offer_list, .mod_job_offer_list_dynamic, .mod_job_search {     
+        > div {
+
+            &.layout_logo {  
+                padding-left: $list-spacing;
+                .image {
+                    display: none;
+                }
+            }   
+        }
+    }
+    
+    
+    .mod_job_request_list, .mod_job_request_search {     
+        > div {
+
+            &.layout_portrait {  
+                padding-left: $list-spacing;
+                .image {
+                    display: none;
+                }
+            }   
+        }
+    }
+}

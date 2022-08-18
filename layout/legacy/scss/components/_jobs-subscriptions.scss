@@ -1,0 +1,102 @@
+.mod_job_search_manager {
+    
+    @include mod_article_basic;
+    
+    .new_subscription {
+        padding-bottom: $base-spacing / 2;
+        
+        a {
+            @include button;
+        }
+    }
+    
+    > div {
+        
+        @include list-basic-div;
+        
+        > div.first {
+        border-top: $base-border;
+        margin-top: $base-spacing--s * $gc;
+        }
+    }
+    
+    .subscription_edit_wrapper {
+        margin-top: $base-spacing--s;
+    }
+    
+    .subscription.paused {
+        color: lighten($color-text, 40);
+        
+        h3 {
+            margin-bottom: 0;
+        }
+        span.paused {
+            margin-bottom: $base-spacing--s;
+            display: inline-block;
+            text-transform: uppercase;
+            color: lighten($color-text, 10);
+            
+        }
+    }
+        
+    @if ($font-awesome-active == true) {
+        
+        .subscription {
+            
+            padding-right: 100px + $base-spacing--s;
+            @include clear;
+
+            > * {
+                float: left;
+            }
+            
+            .subscription_info {
+                width: 100%;
+            }
+            .subscription_edit_wrapper {
+                width: 100px;
+                margin-right: -100%;
+                margin-top: 0;
+                
+                a {
+                    position: relative;
+                    text-indent: -99999px;
+                    display: inline-block;
+                    padding-right: $base-spacing--s / 4;
+                    width: 1.2em;
+                    text-align: center;
+                    font-size: 1.2em;
+                    
+                    &:before {
+                        font-family: FontAwesome;
+                        position: absolute;
+                        left: 0;
+                        text-indent: 0;
+                        width: 1.2em;
+                    }
+                    &.edit_subscription:before {
+                            content: "\f040"; 
+                    }
+                    &.stop_subscription:before {
+                            content: "\f00d"; 
+                    }
+                    &.view_subscription:before {
+                            content: "\f06e"; 
+                    }
+                }
+            }
+        }
+    } 
+    @else {
+        .subscription_edit_wrapper a {
+            
+            &:after {
+            content:" | ";
+            }
+                
+            &:last-child:after {
+                    content:"";
+            }
+        }
+    } 
+}
