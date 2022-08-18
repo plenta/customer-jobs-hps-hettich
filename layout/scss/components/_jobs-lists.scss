@@ -1,0 +1,182 @@
+@use "sass:math";
+// Mixin for Lists with Logos/Portaits to use for "mod_job_request_list" and "mod_job_offer_list".
+@mixin jobs-list-layout-logo-portrait { 
+    position: relative;
+    padding-left: $logo-portrait-width-list + $list-spacing + $list-spacing * $gc + 10px;
+    min-height: $logo-portrait-width-list + 10px;
+    
+    .image {
+        position: absolute;
+        left: $list-spacing;
+        top: $list-spacing;
+        
+        a {
+            display: block;
+            width: $logo-portrait-width-list;
+            height: $logo-portrait-width-list;
+            border: $base-border;
+            padding: 5px;
+            background-color: #fff;
+        }
+        
+        img {
+            max-width: $logo-portrait-width-list;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .headline a {
+        @include jobs-list-headlines;
+        margin-bottom: 8px;
+    }
+    
+    .meta {
+        > span {
+            display: inline-block;
+            margin-right: $list-spacing * $gc;
+            
+            &:last-child {
+                margin-right: 0;
+            }
+            
+            &:before {
+                font-family: $fa;
+                font-weight: 900;
+                display: inline-block;
+                padding-right: math.div($list-spacing, $gc);
+            }
+            
+            &.city:before {
+                content: "\f3c5";
+            }
+            &.type:before {
+                content: "\f017";
+                font-weight: normal;
+            }
+            
+            > .type + .type:before {
+                content: ' / '
+            }
+        }
+    }
+}
+
+@mixin jobs-list-layout-short { // Mixin for Short-Lists to use for "mod_job_request_list" and "mod_job_offer_list".
+    a {
+        @include jobs-list-headlines;
+        margin-bottom: math.div($list-spacing, 2);
+    }   
+}
+
+@mixin jobs-list-layout-gallery { // Mixin for Gallery-Lists (gallery of logos/portraits) to use for "mod_jobs_member_profile_list".
+    a {
+        @include jobs-list-headlines;
+        margin-bottom: math.div($list-spacing, 2);
+    }   
+}
+
+.mod_job_offer_list, .mod_job_request_list, .jobs_list_dynamic, .mod_jobs_member_profile_list {
+    @include list-basic-div;
+}
+
+
+.mod_job_offer_list, .mod_job_offer_list_dynamic, .mod_job_search, .mod_jobs_member_profile_list {
+    > div {
+        &.layout_logo {
+            @include jobs-list-layout-logo-portrait;
+        }
+        &.layout_short {
+            @include jobs-list-layout-short;
+        }
+    }
+}
+@if($font-awesome-active) {
+    .mod_job_offer_list_dynamic {
+        &.bookmark-button-active {
+            .offer {
+                padding-right: $base-spacing-x-large;
+                position: relative;
+
+                .ce_jobs_bookmark_button {
+                    position: absolute;
+                    right: $base-spacing-x-s;
+                    top: $list-spacing;
+                    line-height: 1.8em;
+
+                    button {
+                        @include fa-icon-button('\f005', $fontSize: 1.8em);
+                        background-color: transparent;
+                        padding: 0;
+                        cursor: pointer;
+                        outline: none;
+
+                        &:before {
+                            font-weight: normal;
+                        }
+                    }
+
+                    &.bookmarked {
+                        button {
+                            &:before {
+                                font-weight: 900;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.mod_job_request_list, .mod_job_request_list_dynamic, .mod_job_request_search {
+   > div {
+        &.layout_portrait {
+            @include jobs-list-layout-logo-portrait;
+        }
+        &.layout_short {
+            @include jobs-list-layout-short;
+        }
+    }
+}
+.mod_jobs_member_profile_list {
+    @include clear;
+    > div {
+        &.layout_gallery {
+            float: left;
+            width: calc((100% - #{$gallery-spacing-profile-list * 7}) / 8);
+            margin-right: $gallery-spacing-profile-list;
+            box-sizing: border-box;
+            height: $logo-portrait-width-list + ($list-spacing * 2);
+            border: $base-border;
+            padding: 0;
+            position: relative;
+            
+            a, .image {
+                display: block;
+                height: 100%;
+            }
+            img {
+                max-width: $logo-portrait-width-list;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: calc(100% - (#{$list-spacing} * 2));
+                transition: width 0.25s ease-in-out;
+            }
+            &:nth-child(8n) {
+                margin-right: 0;
+            }
+            &:nth-child(n+9) {
+                margin-top: $gallery-spacing-profile-list;
+            }
+            &:hover {
+                img {
+                    width: calc(90% - (#{$list-spacing} * 2));
+                    transition: width 0.15s ease-in-out;
+                }
+            }
+        }  
+    }
+}

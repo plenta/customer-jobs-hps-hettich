@@ -1,0 +1,196 @@
+@use "sass:math";
+
+.mod_job_offer_reader, .mod_job_request_reader, .mod_jobs_cv_reader {
+    > * > * {
+        margin-bottom: $base-spacing-large;
+    }
+
+    > *:last-child > * {
+        margin-bottom: 0;
+    }
+
+    .details_head_inside {
+        h1 {
+            margin-bottom: 0;
+        }
+
+        .company {
+            font-size: 22px;
+        }
+
+        .meta {
+            margin-top: $base-spacing-x-s;
+            display: flex;
+            flex-wrap: wrap;
+
+            > div {
+                margin-right: $base-spacing;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            @if ($font-awesome-active) {
+                .label {
+                    @include fa-icon-button('\f1ad');
+                    display: inline-block;
+
+                    &:before {
+                        color: $color-text;
+                    }
+                }
+
+                .region .label:before {
+                    content: '\f3c5';
+                }
+
+                .type .label:before {
+                    content: '\f017';
+                }
+
+                .category .label:before {
+                    content: '\f275';
+                }
+
+                .money .label:before {
+                    content: '\f53a';
+                }
+            }
+
+            .category + .category:before, .type + .type:before, .attribute + .attribute:before {
+                content: " / ";
+            }
+        }
+    }
+
+    .details_contact_inside {
+        position: relative;
+        min-height: $logo-portrait-width-reader + 10px;
+
+        .col_1 {
+            position: absolute;
+            width: $logo-portrait-width-reader;
+
+            .image {
+                display: block;
+                width: $logo-portrait-width-reader;
+                height: $logo-portrait-width-reader;
+                border: $base-border;
+                padding: 5px;
+                background-color: #fff;
+                position: relative;
+
+                img {
+                    max-width: $logo-portrait-width-reader;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+            }
+        }
+
+        .col_2 {
+            padding-left: $logo-portrait-width-reader + $base-spacing-gc + 10px + math.div($base-spacing, 4);
+        }
+    }
+
+    .details_main_two_cols {
+        > * {
+            @include clear;
+
+            > * {
+                float: left;
+            }
+        }
+
+        .details-main-left {
+            width: 65%;
+            box-sizing: border-box;
+            padding-right: $base-spacing-gc;
+            border-right: $base-border;
+
+            > * {
+                margin-bottom: $base-spacing;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .details-main-right {
+            width: 35%;
+            box-sizing: border-box;
+            padding-left: $base-spacing-gc;
+
+            .image {
+                margin-bottom: math.div($base-spacing-gc, 2);
+            }
+
+            .details_googlemap {
+                margin-bottom: $base-spacing-gc;
+            }
+        }
+    }
+
+    .ce_jobs_bookmark_button {
+        margin-top: $base-spacing-x-s;
+
+        @if ($font-awesome-active) {
+            button {
+                @include fa-inline-icon('\f005', $padding: 0.6em);
+
+                &:before {
+                    font-weight: normal;
+                }
+            }
+
+            &.bookmarked {
+                button {
+                    &:before {
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact_details {
+        .org {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+}
+
+.mod_jobs_cv_reader {
+    .details-main-left {
+        > * {
+            margin-bottom: $base-spacing;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            > * {
+                margin-bottom: $base-spacing-s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .headline {
+        @extend %h1;
+        margin-bottom: 0;
+    }
+
+    .subheadline {
+        font-weight: bold;
+    }
+}

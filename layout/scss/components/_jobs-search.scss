@@ -1,0 +1,58 @@
+.mod_job_search, .mod_job_request_search {
+    @include search-header;
+    //@include list-basic-div;
+    
+    > div {
+        padding-bottom: $base-spacing;
+        
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+    
+    &.search-results-only form{
+        display: none;
+    }
+
+    #ctrl_attr.checkbox_container {
+        fieldset {
+            margin-bottom: $base-spacing;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+#stage {
+    .mod_job_offer_autocomplete {
+        .formbody {
+            display: inline-block;
+            //width: 100%;
+            //justify-content: center;
+        }
+        input {
+            display: inline-block;
+            max-width: 300px;
+            width: 100%;
+            height: 42px;
+            border: none;
+            text-align: center;
+        }
+
+        input[type=search] {
+            margin-bottom: 16px;
+        }
+        input[type=submit] {
+            //margin-left: $base-spacing-s;
+            //border: 1px solid #fff;
+            transition: all 0.3s;
+            background-color: rgba($color-default, 0.95);
+
+            &:hover {
+                background-color: hsl(hue($color-default), saturation($color-default) * 1.1, lightness($color-default) * 0.9);
+            }
+        }
+    }
+}

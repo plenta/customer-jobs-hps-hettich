@@ -1,0 +1,99 @@
+.ce_productlist {
+    .productlist {
+        display: flex;
+        margin: -$base-spacing-s round(-$base-spacing-s / 2);
+        flex-wrap: wrap;
+    }
+    .product {
+        width: 33.333%;
+        padding: 37px round($base-spacing-s / 2) $base-spacing-s round($base-spacing-s / 2);
+        margin-top: $base-spacing-s;
+        box-sizing: border-box;
+        position: relative;
+        
+        &.featured {
+            .product-inside {
+                @include box-shadow;
+            }
+        }
+    }
+    .top-seller-badge {
+        position: absolute;
+        top: 0;
+        width: calc(100% - #{$base-spacing-s});
+        padding-left: $base-spacing;
+        padding-right: $base-spacing;
+        background-color: $color-default;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        padding-top: $base-spacing-xx-s;
+        padding-bottom: $base-spacing-xx-s;
+        border-top-left-radius: $base-border-radius;
+        border-top-right-radius: $base-border-radius;
+        box-sizing: border-box;
+        
+        + .product-inside {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+    .product-inside {
+        border: $base-border;
+        border-radius: $base-border-radius;
+        height: 100%;
+        padding-left: $base-spacing;
+        padding-right: $base-spacing;
+        box-sizing: border-box;
+        
+        > * {
+            padding-bottom: $base-spacing;
+            
+            &:last-child {
+                //padding-bottom: 0;
+            }
+        }
+    }
+    .product-title {
+        font-size: 18px;
+        padding-top: $base-spacing;
+        margin-top: 0;
+        margin-bottom: $base-spacing;
+        position: relative;
+        font-weight: $font-weight-bold;
+        
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: calc(100% - #{$base-spacing * 2});
+            height: 1px;
+            background-color: $color-gray-lighter;
+            bottom: 0;
+            box-sizing: border-box;
+        }
+    }
+    .product-price {
+        font-weight: $font-weight-bold;
+        font-size: 30px;
+        position: relative;
+        //margin-bottom: $base-spacing;
+
+    }
+    .product-price-text {
+        font-size: 18px;
+        margin-bottom: $base-spacing;
+        position: relative;
+        
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: calc(100% - #{$base-spacing * 2});
+            height: 1px;
+            background-color: $color-gray-lighter;
+            bottom: 0;
+            box-sizing: border-box;
+        }
+    }
+}

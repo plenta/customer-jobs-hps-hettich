@@ -1,2 +1,77 @@
 @media screen and (max-width: 480px) {
+    .mod_job_offer_list, .mod_job_offer_list_dynamic, .mod_job_search {
+        > div {
+            &.layout_logo {
+                padding-left: $list-spacing;
+                .image {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .mod_job_request_list, .mod_job_request_search {
+        > div {
+            &.layout_portrait {
+                padding-left: $list-spacing;
+                .image {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .mod_job_offer_reader, .mod_job_request_reader {
+        .details_contact_inside {
+            min-height: auto;
+            .col_1 {
+                width: 100%;
+                position: static;
+                padding-bottom: $base-spacing-s;
+
+            }
+            .col_2 {
+                padding-left: 0;
+            }
+        }
+
+        .details_main_two_cols {
+            > * > * {
+                float: none;
+            }
+            .details-main-left {
+                width: 100%;
+                box-sizing: border-box;
+                padding-right: 0;
+                border-right: none;
+                padding-bottom: $base-spacing;
+            }
+            .details-main-right {
+                width: 100%;
+                padding-left: 0;
+
+                .image img{
+                    max-width: 300px;
+                }
+            }
+        }
+    }
+
+    .mod_jobs_member_profile_list {
+        > div {
+            &.layout_gallery {
+                width: calc((100% - #{$gallery-spacing-profile-list * 1}) / 2);
+
+                &:nth-child(5n) {
+                    margin-right: $gallery-spacing-profile-list;
+                }
+                &:nth-child(2n) {
+                    margin-right: 0;
+                }
+                &:nth-child(n+3) {
+                    margin-top: $gallery-spacing-profile-list;
+                }
+            }
+        }
+    }
 }

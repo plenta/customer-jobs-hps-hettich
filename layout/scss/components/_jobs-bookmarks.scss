@@ -1,0 +1,25 @@
+.mod_jobs_bookmarks {
+    > div {
+        background-color: lighten($color-default, 45);
+        padding: $base-spacing-x-s $base-spacing-s;
+        box-sizing: border-box;
+        margin-bottom: $base-spacing-x-s;
+        display: flex;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .jobs-bookmark-link {
+            margin-right: $base-spacing;
+
+            a {
+                display: inline-block;
+            }
+        }
+
+        .jobs-bookmark-action-wrapper {
+            margin-left: auto;
+        }
+    }
+}

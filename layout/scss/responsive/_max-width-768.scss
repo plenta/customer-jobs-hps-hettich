@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @media screen and (max-width: 768px) {
     // Stage
     .custom > #stage .mod_article.article-image + .mod_article {
@@ -44,6 +46,60 @@
 
                 > *:first-child {
                     padding-top: 0;
+                }
+            }
+        }
+    }
+
+    .mod_job_offer_reader, .mod_job_request_reader {
+        .details_contact_inside {
+            min-height: $logo-portrait-width-reader * math.div(2,3) + 10px;
+            .col_1 {
+                width: $logo-portrait-width-reader * math.div(2,3);
+
+                .image {
+                    width: $logo-portrait-width-reader * math.div(2,3);
+                    height: $logo-portrait-width-reader * math.div(2,3);
+
+                    img {
+                        max-width: $logo-portrait-width-reader * math.div(2,3);
+                    }
+
+                }
+            }
+            .col_2 {
+                padding-left: $logo-portrait-width-reader * math.div(2,3) + $base-spacing-s + 10px + math.div($base-spacing, 4);
+            }
+        }
+
+        .details_main_two_cols {
+
+            .details-main-left {
+                padding-right: $base-spacing-s * 2;
+            }
+            .details-main-right {
+                padding-left: $base-spacing-s * 2;
+
+                .image {
+                    margin-bottom: math.div($base-spacing-gc, 2);
+                }
+            }
+        }
+    }
+
+    .mod_jobs_member_profile_list {
+        > div {
+            &.layout_gallery {
+                width: calc((100% - #{$gallery-spacing-profile-list * 4}) / 5);
+
+                &:nth-child(7n) {
+                    margin-right: $gallery-spacing-profile-list;
+                }
+                &:nth-child(5n) {
+                    margin-right: 0;
+                }
+                &:nth-child(n+6) {
+                    margin-top: $gallery-spacing-profile-list;
                 }
             }
         }

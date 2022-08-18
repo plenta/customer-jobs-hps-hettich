@@ -44,4 +44,22 @@
             }
         }
     }
+
+    .mod_jobs_member_profile_list {
+        > div {
+            &.layout_gallery {
+                width: calc((100% - #{$gallery-spacing-profile-list * 6}) / 7);
+
+                &:nth-child(8n) {
+                    margin-right: $gallery-spacing-profile-list;
+                }
+                &:nth-child(7n) {
+                    margin-right: 0;
+                }
+                &:nth-child(n+8) {
+                    margin-top: $gallery-spacing-profile-list;
+                }
+            }
+        }
+    }
 }

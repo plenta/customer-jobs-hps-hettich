@@ -1,0 +1,168 @@
+@use "sass:math";
+.mod_job_offer_manager, .mod_job_request_manager {
+    > div {
+        margin-bottom: $base-spacing-x-large;
+    }
+
+    .new_job {
+        margin-bottom: $base-spacing-x-s;
+
+        a {
+            @include button;
+            @include button-color();
+        }
+    }
+
+    .job_manager_list {
+        .job_manager_list_intro {
+            display: inline-block;
+            width: 100%;
+            border-bottom: $base-border;
+            padding-bottom: $base-spacing-xx-s;
+        }
+
+        .job {
+            display: flex;
+            flex-wrap: wrap;
+
+            + .job {
+                margin-top: $base-spacing;
+            }
+        }
+
+        .job_info {
+            border: $base-border;
+            order: 5;
+            width: 100%;
+            padding: $base-spacing-x-s $base-spacing-s;
+        }
+
+        .job_edit_wrapper {
+            order: 2;
+            margin-left: auto;
+            display: flex;
+            border: $base-border;
+            border-top-left-radius: $base-border-radius;
+            border-top-right-radius: $base-border-radius;
+            border-bottom-color: #fff;
+            margin-bottom: -1px;
+            padding-left: $base-spacing-xx-s;
+            padding-right: $base-spacing-xx-s;
+            background-color: $base-border-color;
+
+        }
+    }
+
+    .job_reject_reason {
+        margin-bottom: $base-spacing-s;
+
+        .meta_title {
+            font-weight: bold;
+        }
+    }
+
+    @if ($font-awesome-active == true) {
+        .job_edit_wrapper {
+            a {
+                @include fa-icon-button('');
+                margin-right: math.round(math.div($base-spacing-xx-s, 2));
+                margin-left: math.round(math.div($base-spacing-xx-s, 2));
+
+                &.edit_job:before {
+                    content: "\f304";
+                }
+                &.stop_job:before {
+                    content: "\f28d";
+                    font-weight: $font-weight-regular;
+                }
+                &.delete_job:before {
+                    content: "\f1f8";
+                }
+                &.view_job:before {
+                    content: "\f06e";
+                }
+                &.extend_item:before {
+                    content: '\f01e';
+                }
+            }
+        }
+
+        > .info {
+            &.saving {
+                @include fa-inline-icon('\f1ce', '0');
+
+                &:before {
+                    animation: spin 2s infinite linear;
+                }
+
+            }
+        }
+    } @else {
+        .job_edit_wrapper a {
+
+            &:after {
+                content:" | ";
+            }
+
+            &:last-child:after {
+                content:"";
+            }
+        }
+    }
+
+    .mce-container {
+        box-sizing: border-box; // Fixes missing border because of overflow hidden of parent
+    }
+
+    > .info {
+        &.saving {
+            ~ * {
+                display: none;
+            }
+        }
+    }
+
+    .formbody {
+        > fieldset {
+            margin-bottom: $base-spacing;
+
+            > legend {
+                @extend %h2;
+            }
+        }
+
+        .form-label {
+            @extend %label;
+        }
+
+        .widget-checkbox {
+            fieldset {
+                > legend {
+                    display: none;
+                }
+            }
+        }
+
+        .widget-submit {
+            display: inline-block;
+            margin-right: $base-spacing-xx-s;
+            margin-top: $base-spacing-xx-s;
+        }
+    }
+
+    .widget-fineuploader {
+        &.singleSRC, &.image {
+            .selector_container {
+                li {
+                    img {
+                        margin-right: 0;
+                    }
+
+                    a.delete {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

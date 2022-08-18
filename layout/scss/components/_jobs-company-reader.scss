@@ -1,0 +1,77 @@
+.mod_jobs_company_reader {
+    .meta {
+        > * {
+            display: block;
+        }
+    }
+
+    h2 {
+        ~ div {
+            padding-bottom: $base-spacing-s;
+        }
+    }
+
+    .label {
+        font-weight: 700;
+    }
+
+    .additionals {
+        p {
+            display: inline-block;
+        }
+
+        > span {
+            vertical-align: top;
+        }
+    }
+
+
+    .company-social-media {
+        display: flex;
+
+        > * {
+            margin-right: $base-spacing-xx-s;
+            display: inline-block;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        @if ($font-awesome-active == true) {
+            a {
+                @include fa-brands-button('', $fontSize: 40px);
+                line-height: 40px;
+            }
+
+            // Use square icons for equal width. Otherwise icons differ in width.
+            .social-media-facebook a:before {
+                content: '\f082';
+            }
+
+            .social-media-instagram a:before {
+                content: '\f16d';
+            }
+
+            .social-media-xing a:before {
+                content: '\f169';
+            }
+
+            .social-media-twitter a:before {
+                content: '\f081';
+            }
+
+            .social-media-linkedin a:before {
+                content: '\f08c';
+            }
+
+            .social-media-youtube a:before {
+                content: '\f431';
+            }
+
+            .social-media-vimeo a:before {
+                content: '\f194';
+            }
+        }
+    }
+}
