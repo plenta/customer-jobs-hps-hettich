@@ -13,6 +13,10 @@
         }
     }
 
+    .job_manager_intro {
+        padding-bottom: math.div($base-spacing, 2);
+    }
+
     .job_manager_list {
         .job_manager_list_intro {
             display: inline-block;
@@ -83,6 +87,53 @@
                 }
                 &.extend_item:before {
                     content: '\f01e';
+                }
+            }
+        }
+
+        .job {
+
+            padding-right: 100px + $base-spacing-s;
+            @include clear;
+
+
+            > * {
+                float: left;
+            }
+
+            .job_info {
+                width: 100%;
+            }
+            .job_edit_wrapper {
+                width: 100px;
+                margin-right: -100%;
+                margin-top: 0;
+
+                a {
+                    position: relative;
+                    text-indent: -99999px;
+                    display: inline-block;
+                    padding-right: math.div($base-spacing-s, 4);
+                    width: 1.2em;
+                    text-align: center;
+                    font-size: 1.2em;
+
+                    &:before {
+                        font-family: FontAwesome;
+                        position: absolute;
+                        left: 0;
+                        text-indent: 0;
+                        width: 1.2em;
+                    }
+                    &.edit_job:before {
+                        content: "\f040";
+                    }
+                    &.stop_job:before {
+                        content: "\f00d";
+                    }
+                    &.view_job:before {
+                        content: "\f06e";
+                    }
                 }
             }
         }

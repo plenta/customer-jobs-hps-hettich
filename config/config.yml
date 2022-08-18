@@ -1,24 +1,25 @@
-
-# Contao configuration
 contao:
-    url_suffix: ''
-
+    prepend_locale: false
+    url_suffix: ""
     localconfig:
-        installPassword: '%env(INSTALL_PASSWORD)%'
         adminEmail: '%env(ADMIN_EMAIL)%'
         licenseAccepted: true
-        enableSearch: false
+        enableSearch: true
         disableCron: true
         folderUrl: true
 
-        dateFormat: 'd.m.Y'
-        datimFormat: 'd.m.Y H:i'
+        dateFormat: "d.m.Y"
+        datimFormat: "d.m.Y H:i"
         timeZone: 'Europe/Berlin'
 
         # Adjust the upload image settings
         maxFileSize: 20480000
         imageWidth: 3000
         imageHeight: 3000
+        gdMaxImgWidth: 3000
+        gdMaxImgHeight: 3000
+
+        uploadTypes: 'jpg,jpeg,gif,png,ico,svg,svgz,webp,odt,ods,odp,odg,ott,ots,otp,otg,pdf,csv,doc,docx,dot,dotx,xls,xlsx,xlt,xltx,ppt,pptx,pot,potx,mp3,mp4,m4a,m4v,webm,ogg,ogv,wma,wmv,ram,rm,mov,fla,flv,swf,ttf,ttc,otf,eot,woff,woff2,css,scss,less,js,html,htm,txt,zip,rar,7z,cto,svg'
 
 framework:
     assets:

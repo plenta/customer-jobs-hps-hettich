@@ -5,6 +5,11 @@
         margin-bottom: $base-spacing-large;
     }
 
+    > *:first-child > * {
+        padding-top: 0;
+        padding-bottom: 15px;
+    }
+
     > *:last-child > * {
         margin-bottom: 0;
     }
@@ -130,9 +135,79 @@
                 margin-bottom: math.div($base-spacing-gc, 2);
             }
 
+            .meta {
+                margin-bottom: 40px;
+
+                span.label {
+                    font-weight: bold;
+                }
+            }
+
+            .share-job-offer {
+                margin-bottom: 20px;
+
+                a {
+                    position: relative;
+                    text-indent: -999999px;
+                    display: inline-block;
+                    width: 1.3em;
+                    line-height: 1;
+                    font-size: 25px;
+
+                    &:before {
+                        font-family: Fontawesome;
+                        position: absolute;
+                        left: 0;
+                        text-indent: 0;
+                        content: "";
+                    }
+                    &.facebook:before {
+                        content: "\f082";
+                    }
+                    &.twitter:before {
+                        content: "\f081";
+                    }
+                    &.gplus:before {
+                        content: "\f0d4";
+                    }
+                    &.xing:before {
+                        content: "\f169";
+                    }
+                    &.linkedin:before {
+                        content: "\f08c";
+                    }
+                    &.email:before {
+                        content: "\f0e0";
+                        font-size: 0.95em;
+                    }
+                    &.print:before {
+                        content: "\f02f";
+                        font-size: 0.95em;
+                    }
+                }
+            }
+
             .details_googlemap {
                 margin-bottom: $base-spacing-gc;
             }
+        }
+    }
+
+    .details_head_inside h1, .boxed-blue {
+        background-color: $color-default-2;
+        color: #fff;
+        padding: math.div($base-spacing, 6) math.div($base-spacing, 4);
+    }
+    .widget-headline {
+        margin-top: 20px;
+        p {
+            @extend %h2;
+        }
+    }
+    input.submit {
+        background-color: $color-default-2;
+        &:hover, &:focus, &:active {
+            background-color: hsl(hue($color-default-2), saturation($color-default-2) * 1.1, lightness($color-default-2) * 0.9);
         }
     }
 

@@ -5,6 +5,10 @@
     padding-left: $logo-portrait-width-list + $list-spacing + $list-spacing * $gc + 10px;
     min-height: $logo-portrait-width-list + 10px;
     
+    border: $base-border-width $base-border-style $color-default;
+
+    margin-bottom: 35px;
+
     .image {
         position: absolute;
         left: $list-spacing;
@@ -60,6 +64,32 @@
                 content: ' / '
             }
         }
+
+        .publishedDate {
+            display: block;
+            padding-bottom: 1em;
+        }
+    }
+
+    .meta, .teaser {
+        padding-bottom: 1em;
+    }
+
+    .button {
+        background-color: transparent;
+        color: $color-default;
+        border: $base-border-style $base-border-width $color-default;
+        border-radius: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .category {
+        background-color: $color-default;
+        color: #fff;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline-block;
+        margin-bottom: 5px;
     }
 }
 
@@ -89,6 +119,70 @@
         }
         &.layout_short {
             @include jobs-list-layout-short;
+        }
+
+        &.layout_no_logo {
+            position: relative;
+            //padding-left: $logo-portrait-width-list + $list-spacing + $list-spacing * $gc + 10px;
+            //min-height: $logo-portrait-width-list + 10px;
+
+            //border: $base-border-width $base-border-style $color-default;
+
+            //margin-bottom: 25px;
+
+            .headline a {
+                @include jobs-list-headlines;
+                margin-bottom: 8px;
+            }
+
+            .meta {
+                span {
+                    display: inline-block;
+                    margin-right: $list-spacing * $gc;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &:before {
+                        font-family: 'FontAwesome';
+                        display: inline-block;
+                        padding-right: math.div($list-spacing, $gc);
+                    }
+
+                    &.city:before {
+                        content: "\f041";
+                    }
+                    &.type:before {
+                        content: "\f017";
+                    }
+                }
+                .publishedDate {
+                    display: block;
+                    padding-bottom: 1em;
+                }
+            }
+            .teaser {
+                padding-bottom: 0.8em;
+            }
+
+            .button {
+                background-color: transparent;
+                color: $color-default;
+                border: $base-border-style $base-border-width $color-default;
+                border-radius: 0;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .category {
+                background-color: $color-default;
+                color: #fff;
+                padding-left: 8px;
+                padding-right: 8px;
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+
         }
     }
 }

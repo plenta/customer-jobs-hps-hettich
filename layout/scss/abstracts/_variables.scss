@@ -4,16 +4,17 @@
 // --------------------------------------------------
 
 // General Colors
-$color-default:         #327fb4;
-$color-gray-dark:       #222;
-$color-gray:            #424242;
-$color-gray-light:      #ccc;
-$color-gray-lighter:    #eee;
+$color-default:         #3078BE;
+$color-default-2:       #003875;
+$color-gray-dark:       #212121;
+$color-gray:            #BFBEBE;
+$color-gray-light:      #eaeaea;
+$color-gray-lighter:    #eaeaea;
 $color-alert:           #ff0000;
 
 
 // Base Font Settings
-$base-font-size:          16px;
+$base-font-size:          14px;
 
 $base-line-height:        1.6;
 
@@ -51,9 +52,9 @@ $load-fonts: (
         Black-900i: true
     )*/
 );
-$base-font-family:        "Open Sans", "Helvetica", sans-serif;
+$base-font-family:        "Open Sans", Verdana, Helvetica, sans-serif;
 
-$color-text:              $color-gray;
+$color-text:              $color-gray-dark;
 
 $font-awesome-active: true; // Activate Fontawesome. base/_fonts.scss must be included.
 $fa: 'Font Awesome 5 Free';
@@ -111,7 +112,7 @@ $base-border-style: solid;
 $base-border-width: 1px;
 
 $base-border: $base-border-width $base-border-style $base-border-color;
-$base-border-radius: 2px;
+$base-border-radius: 4px;
 
 // Layout
 $content-width: 1300px;
