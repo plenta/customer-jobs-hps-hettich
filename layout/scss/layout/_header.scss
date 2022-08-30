@@ -1,10 +1,12 @@
 #header {
     padding-top: $base-spacing-s;
     padding-bottom: $base-spacing-s;
+    background-color: #fff;
 
     .inside {
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         .logo {
             + * {
@@ -16,7 +18,11 @@
     .logo {
         img {
             width: var(--logo-width);
-            height: var(--logo-height);
+            height: calc(var(--logo-width) * var(--logo-ratio));
         }
+    }
+
+    .invisible {
+        display: none;
     }
 }

@@ -74,15 +74,19 @@ body.layout-left, body.layout-right {
 // Left Column
 body.layout-left {
     #container {
-        padding-left: $left-column-width;
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        grid-gap: $base-spacing;
+        max-width: 980px;
+        margin: auto;
+        background-color: #fff;
+        padding-left: $base-spacing-large;
+        padding-right: $base-spacing-large;
     }
 
     #left {
-        position: relative;
-        float: left;
-        margin-left: -100%;
-        width: $left-column-width;
-        right: $left-column-width;
+        grid-column-start: 1;
+        grid-row-start: 1;
 
         > .inside {
             padding-right: $base-spacing;

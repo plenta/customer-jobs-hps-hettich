@@ -4,6 +4,10 @@
     @include margin-auto;
 }
 
+#wrapper {
+    background-color: $color-gray-light;
+}
+
 // Article
 .mod_article {
     @include mod_article_basic;

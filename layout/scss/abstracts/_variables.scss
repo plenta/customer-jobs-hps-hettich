@@ -57,8 +57,8 @@ $base-font-family:        "Open Sans", Verdana, Helvetica, sans-serif;
 $color-text:              $color-gray-dark;
 
 $font-awesome-active: true; // Activate Fontawesome. base/_fonts.scss must be included.
-$fa: 'Font Awesome 5 Free';
-$fa-brands: 'Font Awesome 5 Brands';
+$fa: 'Font Awesome 6 Free';
+$fa-brands: 'Font Awesome 6 Brands';
 
 // Font weight
 $font-weight-thin:          100;
@@ -115,15 +115,15 @@ $base-border: $base-border-width $base-border-style $base-border-color;
 $base-border-radius: 4px;
 
 // Layout
-$content-width: 1300px;
+$content-width: 980px;
 $content-padding-first-break-point: 20px; // used to set the first breakpoint dynamically
 $content-classes: '#header .inside, #footer .inside, #main .inside-article'; // other classes: inside-article, inside-x
 
 $left-column-width: 300px;
 $right-column-width: 250px;
 
-$logo-ratio: math.div(44,156); // ratio = height/width;
-$logo-width: 200px;
+$logo-ratio: math.div(138,134); // ratio = height/width;
+$logo-width: 134px;
 
 // Jobs
 $logo-portrait-width-list: 100px !default;

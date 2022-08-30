@@ -145,13 +145,14 @@
                     }
 
                     &:before {
-                        font-family: 'FontAwesome';
+                        font-family: $fa;
+                        font-weight: 900;
                         display: inline-block;
                         padding-right: math.div($list-spacing, $gc);
                     }
 
                     &.city:before {
-                        content: "\f041";
+                        content: "\f3c5";
                     }
                     &.type:before {
                         content: "\f017";

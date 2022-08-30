@@ -1,12 +1,10 @@
 // Footer
 #footer {
-    border-top: 2px solid $color-default;
+    background-color: #fff;
 
     .inside {
         padding-top: $base-spacing-s;
         padding-bottom: $base-spacing-s;
-        display: flex;
-        justify-content: space-between;
 
         > * {
             margin-right: $base-spacing-large;
@@ -15,5 +13,47 @@
                 margin-right: 0;
             }
         }
+
+        .inside-article {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: $base-spacing-large;
+            padding-right: $base-spacing-large;
+
+            .ce_hyperlink {
+                position: relative;
+
+                &:before {
+                    content: "";
+                    width: 30px;
+                    height: 30px;
+                    background-size: contain;
+                    display: inline-block;
+                    position: absolute;
+                }
+            }
+
+            .icon-twitter:before {
+                background-image: url("/layout/img/twitter.png");
+            }
+
+            .icon-facebook:before {
+                background-image: url("/layout/img/facebook.png");
+            }
+
+            .icon-linkedin:before {
+                background-image: url("/layout/img/linkedin.png");
+            }
+
+            .icon-xing:before {
+                background-image: url("/layout/img/xing.png");
+            }
+        }
+    }
+
+    .invisible {
+        display: none;
     }
 }
