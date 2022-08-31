@@ -12,9 +12,22 @@
     "contao/conflicts": "@dev",
     "contao/manager-bundle": "4.13.*",
     "jrgregory/m17-sticky-backend-footer": "^2.0",
-    "terminal42/contao-easy_themes": "^3.0.2",
     "codefog/contao-mobile_menu": "^2.7.1",
-    "erdmannfreunde/contao-grid-bundle": "^1.0.6"
+    "erdmannfreunde/contao-grid-bundle": "^1.0.6",
+    "presprog/contao-slack-notification": "^0.1.0",
+    "terminal42/contao-tablelookupwizard": "^4.0",
+    "terminal42/dcawizard": "^2.4",
+    "terminal42/notification_center": "^1.4",
+    "terminal42/contao-fineuploader": "^3.2.0",
+    "menatwork/contao-multicolumnwizard-bundle": "^3.4.11",
+    "hofff/contao-calendarfield": "^3.0",
+    "terminal42/contao-easy_themes": "^3.0",
+    "bugbuster/contao-botdetection-bundle": "^0.3",
+    "fritzmg/contao-file-access": "^2.1",
+    "phpseclib/phpseclib": "^3",
+    "pdir/contao-sticky-footer": "^1.0",
+    "true/punycode": "~2.0",
+    "ext-simplexml": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5.18",
@@ -26,10 +39,15 @@
   },
   "autoload": {
     "classmap": [
-      "src/ContaoManager/Plugin.php"
+      "src/Brkwsky/ContaoManagerPlugin.php"
     ],
     "psr-4": {
-      "Plenta\\Customer\\": "src"
+      "Brkwsky\\Jobs\\": "src/Brkwsky/Jobs",
+      "Brkwsky\\JobsGeo\\": "src/Brkwsky/JobsGeo",
+      "Brkwsky\\JobsAttributes\\": "src/Brkwsky/JobsAttributes",
+      "Brkwsky\\JobsStructuredData\\": "src/Brkwsky/JobsStructuredData",
+      "Brkwsky\\JobsImport\\": "src/Brkwsky/JobsImport",
+      "Brkwsky\\Customer\\": "src/Brkwsky/Customer"
     }
   },
   "conflict": {
@@ -43,6 +61,10 @@
       "contao-community-alliance/composer-plugin": true,
       "contao-components/installer": true,
       "contao/manager-plugin": true
+    },
+    "component-dir": "assets",
+    "preferred-install": {
+      "contao/core-bundle": "source"
     }
   },
   "extra": {
@@ -50,10 +72,12 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "@php vendor/bin/contao-setup"
+      "@php vendor/bin/contao-setup",
+      "Brkwsky\\Jobs\\Composer\\ScriptHandler::runScripts"
     ],
     "post-update-cmd": [
-      "@php vendor/bin/contao-setup"
+      "@php vendor/bin/contao-setup",
+      "Brkwsky\\Jobs\\Composer\\ScriptHandler::runScripts"
     ]
   }
 }

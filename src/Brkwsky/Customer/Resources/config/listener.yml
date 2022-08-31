@@ -1,0 +1,6 @@
+services:
+    custom_import_listener:
+        class: Brkwsky\Customer\EventListener\CustomImportListener
+        arguments: ['@brkwsky.jobs.import.model']
+        tags:
+            - { name: kernel.event_listener, event: brkwsky.jobs.import.custom }

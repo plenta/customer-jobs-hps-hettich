@@ -9,13 +9,14 @@ declare(strict_types=1);
  * @license       commercial
  */
 
-namespace Plenta\Customer;
+
+namespace Brkwsky\Customer;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Configures the bundle.
  */
-class PlentaCustomerBundle extends Bundle
+class BrkwskyCustomerBundle extends Bundle
 {
 }

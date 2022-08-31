@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2">
+    <file>
+        <body>
+            <trans-unit id="tl_jobs_import.author.0">
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="tl_jobs_import.author.1">
+                <target>Bitte wählen Sie den Autoren aus, der für die importierten Stellenanzeigen genutzt werden soll.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

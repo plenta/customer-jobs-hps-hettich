@@ -1,0 +1,6 @@
+services:
+    Brkwsky\Customer\Controller\ImportController:
+        public: true
+        arguments: ['@brkwsky.jobs.import', '@brkwsky.jobs.import.model']
+        calls:
+            - [setContainer, ['@service_container']]
