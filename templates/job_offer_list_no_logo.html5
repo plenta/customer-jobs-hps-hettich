@@ -1,0 +1,23 @@
+<div class="layout_no_logo <?php echo $this->class; ?>" itemscope itemtype="http://schema.org/JobPosting">
+    <div class="headline">
+        <a href="<?= $this->href; ?>" title="<?= $this->name; ?>"<?= $this->attributes; ?> itemprop="url"><span itemprop="title"><?= $this->name; ?></span></a>
+    </div>
+    <div class="meta">
+        
+        <span class="type" itemprop="employmentType"><?= $this->type; ?></span><?php if ($this->jobCity): ?><span class="city" itemprop="jobLocation"><?= $this->jobCity; ?></span><? elseif ($this->author->city): ?><span class="city" itemprop="jobLocation"><?= $this->author->city; ?></span><? elseif ($this->city): ?><span class="city" itemprop="jobLocation"><?= $this->city; ?></span><?php endif; ?>
+    </div>
+    <?php if ($this->teaser): ?>
+      <div class="teaser">
+          <?= $this->teaser; ?>
+      </div>
+    <?php endif; ?>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-96378483-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-96378483-2');
+</script>

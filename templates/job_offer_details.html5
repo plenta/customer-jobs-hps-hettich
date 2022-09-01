@@ -1,0 +1,144 @@
+<div class="job_offer_details" itemscope itemtype="http://schema.org/JobPosting">
+    <?php $this->block('head'); ?>
+        <div class="details_head">
+            <div class="details_head_inside">
+                <?php $this->block('headline'); ?>
+                    <h1 itemprop="title"><?= $this->name; ?></h1>
+                <?php $this->endblock(); ?>
+                <?php $this->block('head-company'); ?>
+                    <div class="company"><?= $this->company; ?></div>
+                <?php $this->endblock(); ?>
+            </div>
+        </div>
+    <?php $this->endblock(); ?>
+
+    <?php $this->block('main'); ?>
+    <div class="details_main_two_cols">
+        <div class="details_main_inside">
+            <div class="details-main-left">
+                <div class="description" itemprop="description"><?= $this->description; ?></div>
+            </div>
+            <div class="details-main-right">
+            	<div class="share-job-offer">
+            		<a href="https://www.facebook.com/sharer/sharer.php?u={{env::path}}{{env::request}}" class="facebook" target="_blank">Facebook</a>
+            		<a href="https://twitter.com/home?status={{env::path}}{{env::request}}" class="twitter" target="_blank">Twitter</a>
+            		<a href="https://plus.google.com/share?url={{env::path}}{{env::request}}" class="gplus" target="_blank">Google+</a>
+            		<a  href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url={{env::path}}{{env::request}}" class="xing" target="_blank">Xing</a>
+            		<a  href="http://www.linkedin.com/shareArticle?mini=true&url={{env::path}}{{env::request}}&source={{env::path}}{{env::request}}" class="linkedin" target="_blank">LinkedIn</a>
+            	</div>
+                <?php $this->block('head-meta'); ?>
+                    <div class="meta">
+                        <?php if (strlen($this->region)): ?>
+                            <div class="region" itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+                                <span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_place']; ?></span>
+                                <?php if ($this->region && $this->jobCity) : ?>
+                                <span class="job_location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span class="postalcode" itemprop="postalCode"><?= $this->region ?></span> <span class="city" itemprop="addressLocality"><?= $this->jobCity ?></span></span>
+                                <?php else : ?>
+                                <span class="job_location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span class="postalcode" itemprop="postalCode"><?= $this->author->postal ?></span> <span class="city" itemprop="addressLocality"><?= $this->author->city ?></span></span>
+                                <?php endif; ?>
+                            </div><br>
+                        <?php endif; if ($this->money > 0): ?>
+                            <div class="money">
+                                <span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_money']; ?></span> <span itemprop="baseSalary"><?= number_format($this->money, 0, ',', '.'); ?></span>€
+                            </div><br>
+                        <?php endif; ?>
+                        <?php if (strlen($this->type)): ?>
+                            <div class="type"><span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_type']; ?></span> <span itemprop="employmentType"><?= $this->type; ?></span></div><br>
+                        <?php endif; if (strlen($this->category)): ?>
+                            <div class="category">
+                                <span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_category']; ?></span> <span class="category1 category" itemprop="industry"><?= $this->category; ?></span>
+                                <?php if ($this->category2) : ?>
+                                    <span class="category2 category"><?= $this->category2; ?></span>
+                                <?php endif; ?>
+                                <?php if ($this->category3) : ?>
+                                    <span class="category3 category"><?= $this->category3; ?></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if($this->cipher): ?><div class="cipher"><span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_cipher']; ?></span> <?= $this->cipher; ?></div><? endif; ?>
+                    </div>
+                <?php $this->endblock(); ?>
+                <?php $this->block('contact'); ?>
+                    <div class="details_contact">
+                        <div class="details_contact_inside">
+                        	<h2>IHR ANSPRECHPARTNER</h2>
+                            <?php if ($this->image): ?>
+                                    <div class="image">
+                                        {{picture::<?= $this->image; ?>?alt=<?= $this->name; ?>}}
+                                    </div>
+                            <?php endif; ?>
+                            <div class="contact_details" itemprop="hiringOrganization" itemscope itemtype="http://schema.org/Organization">
+                              <?php if (strlen($this->firstname) ||strlen($this->author->firstname) || strlen($this->lastname) || strlen($this->author->lastname)): ?>
+                              <div class="n"><? if (strlen($this->firstname)): echo $this->firstname; else: echo $this->author->firstname; endif; ?> <? if (strlen($this->lastname)): echo $this->lastname; else: echo $this->author->lastname; endif; ?></div>
+                              <?php endif; ?>
+                              
+                                <?php if (strlen($this->company)): ?>
+                                <div class="org fn" itemprop="name"><?= $this->company; ?></div>
+                                <?php elseif (strlen($this->author->company)): ?>
+                                <div class="org fn" itemprop="name"><?= $this->author->company; ?></div>
+                                <?php endif; ?>
+
+                                <? if (strlen($this->contact)): ?>
+                                <div class="n"><?= $this->contact; ?></div>
+                                <?php elseif (strlen($this->author->contact)): ?>
+                                <div class="n"><?= $this->author->contact; ?></div>
+                                <?php endif; ?>
+
+                                <div class="adr" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <div class="street-address" itemprop="streetAddress"><?php if (strlen($this->street)): ?><?= $this->street; ?><?php elseif (strlen($this->author->street)): ?><?= $this->author->street; endif;?></div>
+                                    <span class="postal-code" itemprop="postalCode"><?php if (strlen($this->postal)): ?><?= $this->postal; ?><?php elseif (strlen($this->author->postal)): ?><?= $this->author->postal; endif;?></span> <span class="locality" itemprop="addressLocality"><?php if (strlen($this->city)): ?><?= $this->city; ?><?php elseif (strlen($this->author->city)): ?><?= $this->author->city; endif;?></span>
+                                </div>
+
+                                <?php if (strlen($this->phone) || strlen($this->fax)): ?>
+                                <div class="phone-fax">
+                                    <?php if (strlen($this->phone)): ?>
+                                    <div class="tel">
+                                        <span class="type">Tel.</span><span itemprop="telephone"><?= $this->phone; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <? if (strlen($this->fax)): ?>
+                                    <div class="fax">
+                                        <span class="type">Fax </span><span itemprop="faxNumber"><?= $this->fax; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <?php elseif (strlen($this->author->phone) || strlen($this->author->fax)): ?>
+                                <div class="phone-fax">
+                                    <?php if (strlen($this->author->phone)): ?>
+                                    <div class="tel">
+                                        <span class="type">Tel. </span><span itemprop="telephone"><?= $this->author->phone; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <? if (strlen($this->author->fax)): ?>
+                                    <div class="fax">
+                                        <span class="type">Fax </span><span itemprop="faxNumber"><?= $this->author->fax; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <?php endif; ?>
+
+                                <a class="email" href="mailto:<? if (strlen($this->email)): echo \Contao\Idna::encodeEmail($this->email); else: echo \Contao\Idna::encodeEmail($this->author->email); endif; ?>"><span itemprop="email"><? if (strlen($this->email)): echo \Contao\Idna::encodeEmail($this->email); else: echo \Contao\Idna::encodeEmail($this->author->email); endif; ?></span></a><br>
+                                <?php if (strlen($this->website)): ?><?= $this->website; ?><?php endif; ?>
+                        </div>
+                    </div>
+            </div>
+        <?php $this->endblock(); ?>
+            </div>
+        </div>
+    </div>
+    <?php if ($this->attachment): ?>
+        <div class="attachment">
+            <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_headline_attachment']; ?></h2>
+            <?= $this->attachment; ?>
+        </div>
+    <?php endif; ?>
+    <?php $this->endblock(); ?>
+
+    <?php $this->block('contactform'); ?>
+    <div class="details_contact_form">
+        <div class="details_contact_form_inside">
+            <?= $this->requestForm; ?>
+        </div>
+    </div>
+    <?php $this->endblock(); ?>
+</div>

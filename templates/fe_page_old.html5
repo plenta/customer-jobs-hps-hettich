@@ -1,0 +1,6 @@
+<?php $this->extend('fe_page') ?>
+<?php $this->block('head') ?>
+	<?php $this->parent() ?>
+	<link rel="stylesheet" href="files/assets/theme/dist/css/style.min.css?v=201710130957">
+	<link rel="stylesheet" href="files/assets/css/custom.css">
+<?php $this->endblock() ?>
