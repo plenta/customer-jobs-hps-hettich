@@ -1,0 +1,46 @@
+
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+    <script>
+        (function($) {
+            $(document).ready(function() {
+                $("#keywords_<?php echo $this->id; ?>").autocomplete({
+                    minLength: 3,
+                    source : function(request,response){
+                        $.ajax({
+                            url: "<?php echo $this->scriptAction; ?>",
+                            data: {term: request.term, action: 'autocomplete'}
+                            cache: false,
+                            success: function(result) {
+                                response($.map(result, function(item) { return { label: item.label, value: item.value } } ));
+                            }
+                        });
+                    },
+                    open: function(event, ui) { $(".ui-autocomplete").css("z-index", 1000); }
+                });
+            });
+        })(jQuery);
+    </script>
+
+    <form id="jobs_autocomplete_<?php echo $this->id; ?>" method="<?php echo $this->method; ?>" action="<?php echo $this->action; ?>" enctype="application/x-www-form-urlencoded">
+        <div class="formbody">
+            <div class="widget widget-text job_fulltext_search">
+			<label for="ctrl_job_region">Was</label>
+        	<input type="search" name="keywords" id="keywords_<?php echo $this->id; ?>" class="text" value="" <?php if ($this->placeholder): ?>placeholder="<?php echo $this->placeholder; ?>"<?php endif; ?>>
+        </div>
+		<div class="widget widget-text job_region">
+			<label for="ctrl_job_region">Ort, PLZ</label>
+			<input id="ctrl_job_region" type="text" name="job_region" value="<?php echo $this->strRegion; ?>" placeholder="Ort, PLZ" />
+		</div>
+		<input type="hidden" name="job_perimeter" id="ctrl_job_perimeter" class="text" value="25">
+            <input type="submit" class="submit" value="<?php echo $this->submitButton; ?>">
+        </div>
+    </form>
+
+    <?php if($this->jumpToSearch && strlen($this->detailLinkName)): ?>
+    <a href="<?php echo $this->jumpToSearch; ?>" title="<?php echo $this->detailLinkName; ?>"><?php echo $this->detailLinkName; ?></a>
+    <?php endif; ?>
+
+<?php $this->endblock(); ?>

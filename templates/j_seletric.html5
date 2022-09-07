@@ -1,0 +1,9 @@
+<script>
+  (function($) {
+  	$(document).ready(function() {
+        $('select').selectric({
+            disableOnMobile: false,
+        });
+	}); 
+  })(jQuery);
+</script>

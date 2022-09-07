@@ -1,0 +1,194 @@
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            var jobsForm = $('#jobsSearch_<?= $this->id; ?>');
+            var data = jobsForm.serialize()
+            history.replaceState(null, null, location.pathname + '?' + data);
+
+            function jobsFormAjax() {
+                $.ajax({
+                    url: "<?= $this->ajaxAction; ?>",
+                    data: data,
+                    type: 'GET',
+                    cache: false,
+                    success: function(result) {
+                        $('.mod_job_offer_list_dynamic').html(result);
+                    }
+                });
+            }
+            
+            jobsForm.change(jobsFormAjax);
+
+            <?php if($this->showFulltext): ?>
+            $('#keywords').keyup(function(e) {
+                setTimeout( function () {
+                    if ($("#keywords").val().length >= 3) { jobsForm.change(); }
+                }, 1000);
+            });
+            <?php endif; ?>
+
+            <?php if($this->showRegion): ?>
+            $('#ctrl_job_region').keyup(function(e) {
+                setTimeout( function () {
+                    if ($("#ctrl_job_region").val().length >= 3) { jobsForm.change(); }
+                }, 1000);
+            });
+            <?php endif; ?>
+            
+            $('a.jobsSearch_<?= $this->id; ?>.reset-form').on('click', function (e) {
+                e.preventDefault();
+                document.getElementById('jobsSearch_<?= $this->id; ?>').reset();
+                jobsFormAjax();
+            });
+
+            $("#keywords").autocomplete({
+                minLength: 3,
+                source : function(request,response){
+                    $.ajax({
+                        url: "<?= $this->scriptAction; ?>",
+                        data: {term: request.term},
+                        cache: false,
+                        success: function(result) {
+                            response($.map(result, function(item) { return { label: item.label, value: item.value } } ));
+                        }
+                    });
+                },
+                open: function(event, ui) { $(".ui-autocomplete").css("z-index", 1000); }
+            });
+        })
+    })(jQuery);
+</script>
+
+<form id="jobsSearch_<?= $this->id; ?>" action="<?= $this->action; ?>" method="<?= $this->method; ?>">
+    <div class="formbody">
+        <?php if ($this->method != 'GET'): ?>
+        <input type="hidden" name="FORM_SUBMIT" value="jobsSearch_<?= $this->id; ?>">
+        <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+        <input type="hidden" id="jobsPerPage" name="jobsPerPage" value="">
+        <input type="hidden" id="job_sorting" name="job_sorting" value="">
+        <?php endif; ?>
+
+        <?php if ($this->id): ?>
+        <input type="hidden" name="id" value="<?= $this->id; ?>" />
+        <?php endif; ?>
+
+        <?php if($this->showFulltext): ?>
+        <div class="widget widget-text job-keywords">
+            <label for="keywords"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_fulltext']; ?></label>
+            <input type="search" name="keywords" id="keywords" class="text" value="<?= $this->keyword; ?>" autocomplete="off" />
+        </div>
+        <?php else: ?>
+        <input type="hidden" name="keywords" value="" />
+        <?php endif; ?>
+
+        <?php if($this->showJobTypes): ?>
+        <?php if ($this->showJobTypesMultiple): ?>
+        <div class="widget widget-checkbox job-type">
+            <?= $this->jobsSearchForm->getWidget('job_type')->generateWithError(); ?>
+        </div>
+        <?php else: ?>
+        <div class="widget widget-select job-type">
+            <label for="ctrl_job_type"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_type']; ?></label>
+            <select id="ctrl_job_type" name="job_type">
+                <option value=""><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_option_all_types']; ?></option>
+                <?php foreach( $this->types as $val => $name ): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_type')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if($this->showRegion): ?>
+        <div class="widget widget-text job-region">
+            <label for="ctrl_job_region"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_region']; ?></label>
+            <input id="ctrl_job_region" type="text" name="job_region" value="<?= $this->strRegion; ?>" />
+        </div>
+        <?php endif; ?>
+
+        <?php if ($this->showPerimeter): ?>
+        <div class="widget widget-select job-perimeter <?= $this->jobsSearchForm->getWidget('job_perimeter')->strPrefix; ?>">
+            <?= $this->jobsSearchForm->getWidget('job_perimeter')->generateLabel(); ?>
+            <?= $this->jobsSearchForm->getWidget('job_perimeter')->generateWithError(); ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($this->showJobCategoriesMultiple): ?>
+        <div class="widget widget-checkbox job-category">
+            <?= $this->jobsSearchForm->getWidget('job_category')->generateWithError(); ?>
+        </div>
+        <?php else: ?>
+        <?php if($this->showCategories >= 1): ?>
+        <div class="widget widget-select job-category">
+            <label for="ctrl_job_category"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_category']; ?></label>
+            <select id="ctrl_job_category" name="job_category">
+                <option value=""><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_option_all_categories']; ?></option>
+                <?php foreach( $this->categories as $val => $name ): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_category')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+        <?php if($this->showCategories >= 2): ?>
+        <div class="widget widget-select job-category2">
+            <label for="ctrl_job_category2"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_category2']; ?></label>
+            <select id="ctrl_job_category2" name="job_category2">
+                <option value=""><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_option_all_categories']; ?></option>
+                <?php foreach( $this->categories as $val => $name ): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_category2')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+        <?php if($this->showCategories == 3): ?>
+        <div class="widget widget-select job-category3">
+            <label for="ctrl_job_category3"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_category3']; ?></label>
+            <select id="ctrl_job_category3" name="job_category3">
+                <option value=""><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_option_all_categories']; ?></option>
+                <?php foreach( $this->categories as $val => $name ): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_category3')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if($this->showTags): ?>
+        <div class="widget widget-select job-tags">
+            <label for="ctrl_job_tags"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_tags']; ?></label>
+            <select id="ctrl_job_tags" name="job_tags">
+                <option value=""><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_option_all_tags']; ?></option>
+                <?php foreach($this->jobsTags as $val => $name): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_tags')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+
+        <?php if($this->showSalary): ?>
+        <div class="widget widget-text job-money">
+            <label for="ctrl_job_money"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_money']; ?></label>
+            <input id="ctrl_job_money" type="text" name="job_money" value="<?= $this->Input->get('job_money'); ?>" />
+        </div>
+        <?php endif; ?>
+
+        <?php if($this->showSorting): ?>
+        <div class="widget widget-select job-sorting">
+            <label for="ctrl_job_sorting"><?= $GLOBALS['TL_LANG']['JOBS']['search_offer_label_sorting']; ?></label>
+            <select id="ctrl_job_sorting" name="job_sorting">
+                <?php foreach( $this->sorting as $val => $name ): ?><option value="<?= $val ;?>"<?php if($this->Input->get('job_sorting')==$val): ?> selected="selected"<?php endif; ?>><?= $name; ?></option><?php endforeach; ?>
+            </select>
+        </div>
+        <?php endif; ?>
+
+        <div class="submit_container">
+            <input type="submit" id="submit" class="submit" value="<?= $this->search; ?>" />
+        </div>
+
+        <?php if(FE_USER_LOGGED_IN && $this->showSubscribe): ?>
+        <div class="submit_container">
+            <input type="submit" name="subscribe" class="subscribe" value="<?= $this->subscribe; ?>" />
+        </div>
+        <?php endif; ?>
+
+        <?php if(!FE_USER_LOGGED_IN && $this->showSubscribe): ?>
+        <?= $this->aboNotice; ?>
+        <?php endif; ?>
+
+    </div>
+</form>
+
+<div class="ce_hyperlink reset-form block">
+    <a href="<?= $this->ajaxAction; ?>" class="reset-form jobsSearch_<?= $this->id; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['search_reset_form']; ?></a>
+</div>
