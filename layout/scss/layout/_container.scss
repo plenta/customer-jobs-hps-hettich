@@ -60,6 +60,7 @@
 body.layout-left, body.layout-right {
     #container {
         box-sizing: border-box;
+        background-color: #fff;
 
         @include clear;
     }
@@ -74,22 +75,24 @@ body.layout-left, body.layout-right {
 // Left Column
 body.layout-left {
     #container {
-        display: grid;
-        grid-template-columns: 0.5fr 1fr;
-        grid-gap: $base-spacing;
-        max-width: 980px;
-        margin: auto;
-        background-color: #fff;
-        padding-left: $base-spacing-large;
+        padding-left: $left-column-width;
+    }
+
+    #main {
         padding-right: $base-spacing-large;
+        box-sizing: border-box;
     }
 
     #left {
-        grid-column-start: 1;
-        grid-row-start: 1;
+        position: relative;
+        float: left;
+        margin-left: -100%;
+        width: $left-column-width;
+        right: $left-column-width;
 
         > .inside {
-            padding-right: $base-spacing;
+            padding-right: $base-spacing-large;
+            padding-left: $base-spacing-large;
         }
     }
 }
@@ -101,6 +104,11 @@ body.layout-right {
         padding-right: $right-column-width;
     }
 
+    #main {
+        padding-left: $base-spacing-large;
+        box-sizing: border-box;
+    }
+
     #right {
         position: relative;
         float: left;
@@ -108,7 +116,8 @@ body.layout-right {
         width: $right-column-width;
 
         > .inside {
-            padding-left: $base-spacing;
+            padding-right: $base-spacing-large;
+            padding-left: $base-spacing-large;
         }
     }
 }

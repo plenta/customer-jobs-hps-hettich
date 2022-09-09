@@ -4,9 +4,9 @@
     --logo-height: calc(var(--logo-width) * var(--logo-ratio));
 }
 
-html {
+body {
+    line-height: $base-line-height;
     font-family: $base-font-family;
     font-size: $base-font-size;
-    line-height: $base-line-height;
     color: $color-text;
 }

@@ -11,8 +11,8 @@ nav {
         color: $color-text;
     }
 
-    a:hover, strong, a.trail {
-        color: $color-default;
+    a:hover, strong, a.trail, li:hover > a {
+        color: $color-gray;
         text-decoration: none;
     }
 
@@ -27,10 +27,20 @@ nav {
 
 #header {
     .mainmenu {
+        ul {
+            a, strong {
+                font-size: 16px;
+            }
+        }
+
         ul.level_1 {
             > li {
                 float: left;
-                margin-right: 30px;
+
+                > a, > strong {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
 
                 &:last-child {
                     margin-right: 0;
@@ -41,9 +51,27 @@ nav {
                     background-color: #fff;
                     z-index: 1000;
                     padding: round(math.div($base-spacing-s, $gc));
+
+                    > li {
+                        > a, > strong {
+                            padding: 15px;
+                        }
+                    }
                 }
             }
         }
+    }
+}
+
+.nav_checkbox {
+    left:-999999px;
+    position:absolute;
+}
+.nav_toggle {
+    display:none;
+
+    &:after {
+        cursor: pointer;
     }
 }
 
@@ -57,114 +85,6 @@ nav {
 
                     &:last-child {
                         margin-right: 0;
-                    }
-                }
-            }
-        }
-    }
-}
-
-// Mobile Menu
-.nav_toggle {
-    @include fa-inline-icon('\f0c9', $position: 'after');
-    right: 20px;
-    top: $base-spacing-s;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    z-index: 1001;
-    color: #fff;
-    cursor: pointer;
-    background-color: $color-default;
-    font-size: $base-font-size;
-    padding: $base-spacing-xx-s $base-spacing-x-s;
-    line-height: 1;
-
-    &:after {
-        font-size: 24px;
-        width: 1em;
-
-        @at-root .mobile_menu_active & {
-            content: '\f00d';
-        }
-    }
-}
-
-.mobile_menu {
-    // Debug
-    /*transform: translate3d(0,0,0) !important;
-    ul {
-        display: block !important;
-    }*/
-    // Debug end
-    z-index: 100001;
-
-    .inner {
-        background-color: #fff;
-    }
-
-    .submenu_show {
-        > div {
-            > ul {
-                display: block;
-            }
-        }
-    }
-
-    .mainmenu {
-        a, strong {
-            color: $color-default;
-            border-bottom: 1px solid $color-gray-lighter;
-            padding: $base-spacing-xx-s $base-spacing;
-            display: block;
-        }
-
-        a:hover, strong {
-            background-color: $color-gray-lighter;
-        }
-
-        ul {
-            &.level_1 {
-                > li {
-                    > a, > strong {
-                        text-transform: uppercase;
-                        font-weight: $font-weight-semi-bold;
-                        position: relative;
-                        padding-right: $base-spacing-x-large;
-
-                        &.submenu {
-                            &:after {
-                                font-family: $fa;
-                                position: absolute;
-                                right: $base-spacing;
-                                content: '\f078';
-
-                            }
-                        }
-                    }
-
-                    &.submenu_show {
-                        > a, > strong {
-                            &:after {
-                                content: '\f077';
-                            }
-                        }
-                    }
-
-                    &.trail, &.active, &.submenu_show {
-                        > a, > strong {
-                            background-color: $color-default;
-                            color: #fff;
-                            border-bottom-color: $color-default;
-                        }
-                    }
-                }
-            }
-
-            &.level_2 {
-                li {
-                    a, strong {
-                        padding-left: $base-spacing + $base-spacing-x-s;
                     }
                 }
             }
