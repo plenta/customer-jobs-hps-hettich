@@ -3,11 +3,13 @@
     (function($) {
         $(document).ready(function() {
             var jobsForm = $('#jobsSearch_<?= $this->id; ?>');
+            var data = jobsForm.serialize()
+            history.replaceState(null, null, location.pathname + '?' + data);
 
             function jobsFormAjax() {
                 $.ajax({
                     url: "<?= $this->ajaxAction; ?>",
-                    data: jobsForm.serialize(),
+                    data: data,
                     type: 'GET',
                     cache: false,
                     success: function(result) {

@@ -1,0 +1,172 @@
+
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="filter_wrapper">
+    <span class="filter filter_new"><?= $GLOBALS['TL_LANG']['JOBS']['filter_new'] ?></span>
+    <span class="filter filter_current"><?= $GLOBALS['TL_LANG']['JOBS']['filter_current'] ?></span>
+    <span class="filter filter_old"><?= $GLOBALS['TL_LANG']['JOBS']['filter_old'] ?></span>
+    <span class="filter filter_rejected"><?= $GLOBALS['TL_LANG']['JOBS']['filter_rejected'] ?></span>
+    <span class="filter filter_upcoming"><?= $GLOBALS['TL_LANG']['JOBS']['filter_upcoming'] ?></span>
+    <?php foreach($this->filters as $k => $filter): ?>
+        <span class="filter <?= $k ?>"><?= $filter ?></span>
+    <?php endforeach; ?>
+    <script>
+        (function ($) {
+            function applyFilter(filter) {
+                if (filter === '') {
+                    $('.job').show();
+                } else {
+                    $('.job').hide();
+                    $('span.filter').removeClass('active');
+                    $('span.'+filter).addClass('active');
+                    $('.job.'+filter).show();
+                }
+            }
+
+            $(document).ready(function () {
+                let filter = '';
+
+                applyFilter(filter);
+
+                $('span.filter').click(function () {
+                    let filter_class = $(this)[0].classList[1];
+                    if ($(this).hasClass('active')) {
+                        filter = '';
+                    } else {
+                        filter = filter_class;
+                    }
+                    applyFilter(filter);
+                })
+            });
+
+        })(jQuery);
+    </script>
+</div>
+
+<?php if ((is_array($this->offers) || $this->offers instanceof Countable) && !empty($this->offers)): ?>
+<?php if ($this->allowCreate): ?> <div class="ce_hyperlink new_job"><a href="<?= $this->hrefNew; ?>" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_create']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_create']; ?></a></div><?php endif; ?>
+<div class="ce_text job_manager_intro"><p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_intro']; ?></p></div>
+
+<?php if ((is_array($this->new) || $this->new instanceof Countable) && !empty($this->new)): ?>
+<div class="job_new">
+    <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_new_headline']; ?></h2>
+    <p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_new_intro']; ?></p>
+    <?php foreach( $this->new as $k => $i ): ?>
+    <div class="job <?= $k%2 ? 'even' : 'odd'; echo $k==0 ? ' first' : ''; echo $k+1==count($this->new) ? ' last' : ''; ?>">
+        <div class="job_info">
+            <h3><?= $this->offers[$i]['name']; ?></h3>
+            <div class="job_location">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['tl_job_offer']['jobCity'][0] ?>:</span> 
+                <?= $this->offers[$i]['jobStreet'] ?><?php if($this->offers[$i]['jobStreet'] && ($this->offers[$i]['region'] || $this->offers[$i]['jobCity'])): ?>, <?php endif; ?> <?=$this->offers[$i]['region'] ?> <?= $this->offers[$i]['jobCity'] ?>
+            </div>
+        </div>
+        <div class="job_edit_wrapper">
+            <a href="<?= $this->offers[$i]['href_edit']; ?>" class="edit_job" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?></a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?php if ((is_array($this->upcoming) || $this->upcoming instanceof Countable) && !empty($this->upcoming)): ?>
+<div class="job_upcoming">
+    <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_upcoming_headline']; ?></h2>
+    <p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_upcoming_intro']; ?></p>
+    <?php foreach( $this->upcoming as $k => $i ): ?>
+    <div class="job <?= $k%2 ? 'even' : 'odd'; echo $k==0 ? ' first' : ''; echo $k+1==count($this->current) ? ' last' : ''; ?>">
+        <div class="job_info">
+            <h3><?= $this->offers[$i]['name']; ?></h3>
+            <div class="job_startdate"><span class="meta_title">Startdatum:</span> <?= $this->offers[$i]['start']; ?></div>
+            <div class="job_location">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['tl_job_offer']['jobCity'][0] ?>:</span> 
+                <?= $this->offers[$i]['jobStreet'] ?><?php if($this->offers[$i]['jobStreet'] && ($this->offers[$i]['region'] || $this->offers[$i]['jobCity'])): ?>, <?php endif; ?> <?=$this->offers[$i]['region'] ?> <?= $this->offers[$i]['jobCity'] ?>
+            </div>
+        </div>
+        <div class="job_edit_wrapper">
+            <a href="<?= $this->offers[$i]['href_edit']; ?>" class="edit_job" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?></a> 
+            <a href="<?= $this->offers[$i]['href_stop']; ?>"  class="stop_job" onclick="return confirm('<?= $this->confirm_stop; ?>');" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_cancel']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_cancel']; ?></a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?php if ((is_array($this->current) || $this->current instanceof Countable) && !empty($this->current)): ?>
+<div class="job_current">
+    <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_current_headline']; ?></h2>
+    <p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_current_intro']; ?></p>
+    <?php foreach( $this->current as $k => $i ): ?>
+    <div class="job <?= $k%2 ? 'even' : 'odd'; echo $k==0 ? ' first' : ''; echo $k+1==count($this->current) ? ' last' : ''; ?>">
+        <div class="job_info">
+            <h3><?= $this->offers[$i]['name']; ?></h3>
+            <div class="job_enddate"><span class="meta_title">Enddatum:</span> <?= $this->offers[$i]['stop']; ?></div>
+            <div class="job_location">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['tl_job_offer']['jobCity'][0] ?>:</span> 
+                <?= $this->offers[$i]['jobStreet'] ?><?php if($this->offers[$i]['jobStreet'] && ($this->offers[$i]['region'] || $this->offers[$i]['jobCity'])): ?>, <?php endif; ?> <?=$this->offers[$i]['region'] ?> <?= $this->offers[$i]['jobCity'] ?>
+            </div>
+        </div>
+        <div class="job_edit_wrapper">
+            <a href="<?= $this->offers[$i]['href_edit']; ?>" class="edit_job" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?></a> 
+            <a href="<?= $this->offers[$i]['href_stop']; ?>"  class="stop_job" onclick="return confirm('<?= $this->confirm_stop; ?>');" title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_cancel']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_cancel']; ?></a>
+            <a href="<?= $this->offers[$i]['href']; ?> "class="view_job"<?= LINK_NEW_WINDOW; ?> title="<?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_show']; ?>"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_show']; ?></a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?php if ((is_array($this->rejected) || $this->rejected instanceof Countable) && !empty($this->rejected)): ?>
+<div class="job_rejected">
+    <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_rejected_headline']; ?></h2>
+    <p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_rejected_intro']; ?></p>
+    <?php foreach( $this->rejected as $k => $i ): ?>
+    <div class="job <?= $k%2 ? 'even' : 'odd'; echo $k==0 ? ' first' : ''; echo $k+1==count($this->rejected) ? ' last' : ''; ?>">
+        <div class="job_info">
+            <h3><?= $this->offers[$i]['name']; ?></h3>
+            <div class="job_reject_reason">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_rejected_info']; ?></span> <?= $this->offers[$i]['rejectReason']; ?>
+            </div>
+            <div class="job_location">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['tl_job_offer']['jobCity'][0] ?>:</span> 
+                <?= $this->offers[$i]['jobStreet'] ?><?php if($this->offers[$i]['jobStreet'] && ($this->offers[$i]['region'] || $this->offers[$i]['jobCity'])): ?>, <?php endif; ?> <?=$this->offers[$i]['region'] ?> <?= $this->offers[$i]['jobCity'] ?>
+            </div>
+        </div>
+        <div class="job_edit_wrapper">
+            <a href="<?= $this->offers[$i]['href_edit']; ?>" class="edit_job"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?></a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?php if ((is_array($this->old) || $this->old instanceof Countable) && !empty($this->old)): ?>
+<div class="job_old">
+    <h2><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_old_headline']; ?></h2>
+    <p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_old_intro']; ?></p>
+    <?php foreach( $this->old as $k => $i ): ?>
+    <div class="job <?= $k%2 ? 'even' : 'odd'; echo $k==0 ? ' first' : ''; echo $k+1==count($this->old) ? ' last' : ''; ?>">
+        <div class="job_info">
+            <h3><?= $this->offers[$i]['name']; ?></h3>
+            <div class="job_enddate"><span class="meta_title">Enddatum:</span> <?= $this->offers[$i]['stop']; ?></div>
+            <div class="job_location">
+                <span class="meta_title"><?= $GLOBALS['TL_LANG']['tl_job_offer']['jobCity'][0] ?>:</span> 
+                <?= $this->offers[$i]['jobStreet'] ?><?php if($this->offers[$i]['jobStreet'] && ($this->offers[$i]['region'] || $this->offers[$i]['jobCity'])): ?>, <?php endif; ?> <?=$this->offers[$i]['region'] ?> <?= $this->offers[$i]['jobCity'] ?>
+            </div>
+        </div>
+        <div class="job_edit_wrapper">
+            <a href="<?= $this->offers[$i]['href_edit']; ?>" class="edit_job"><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_button_edit']; ?></a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<?= $this->pagination; ?>
+
+<?php else: ?>
+<div class="empty"><p><?= $GLOBALS['TL_LANG']['JOBS']['offer_manager_empty']; ?> <?php if ($this->allowCreate): ?>  <?= sprintf($GLOBALS['TL_LANG']['JOBS']['offer_manager_empty_create'], $this->hrefNew); ?> <?php endif; ?></p></div>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>

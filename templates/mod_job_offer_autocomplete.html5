@@ -11,7 +11,7 @@
                     source : function(request,response){
                         $.ajax({
                             url: "<?php echo $this->scriptAction; ?>",
-                            data: {term: request.term},
+                            data: {term: request.term, action: 'autocomplete'}
                             cache: false,
                             success: function(result) {
                                 response($.map(result, function(item) { return { label: item.label, value: item.value } } ));
