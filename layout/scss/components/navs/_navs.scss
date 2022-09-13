@@ -91,3 +91,45 @@ nav {
         }
     }
 }
+
+.footer-soc-menu {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $base-spacing-x-s;
+
+        &:after {
+            display: none;
+        }
+
+        a {
+            position: relative;
+            text-indent: -9999px;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            &:hover {
+                filter: grayscale(100);
+            }
+
+            &[href*=twitter] {
+                background-image: url("/layout/img/twitter.png");
+            }
+
+            &[href*=facebook] {
+                background-image: url("/layout/img/facebook.png");
+            }
+
+            &[href*=linkedin] {
+                background-image: url("/layout/img/linkedin.png");
+            }
+
+            &[href*=xing] {
+                background-image: url("/layout/img/xing.png");
+            }
+        }
+    }
+}

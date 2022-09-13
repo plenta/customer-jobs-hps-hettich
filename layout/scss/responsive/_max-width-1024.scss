@@ -1,4 +1,8 @@
 @media screen and (max-width: 1024px) {
+    :root {
+        --left-column-width: 250px;
+        --right-coloumn-width: 250px;
+    }
     
     // Stage
     .custom > #stage .mod_article.article-image + .mod_article {
@@ -10,38 +14,6 @@
     #header {
         .mainmenu {
             display: none;
-        }
-    }
-    
-    // Left Column
-    $left-column-width: 250px;
-    body.layout-left {
-        #container {
-            padding-left: $left-column-width;
-        }
-
-        #left {
-            width: $left-column-width;
-            right: $left-column-width;
-
-            > .inside {
-                padding-right: $base-spacing-s * 2;
-            }
-        }
-    }
-    // Right Column
-    $right-column-width: 250px;
-    body.layout-right {
-        #container {
-            padding-right: $right-column-width;
-        }
-
-        #right {
-            width: $right-column-width;
-
-            > .inside {
-                padding-left: $base-spacing-s * 2;
-            }
         }
     }
 
