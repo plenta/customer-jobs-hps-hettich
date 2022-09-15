@@ -2,7 +2,7 @@ a.button,
 .ce_hyperlink.button a,
 input.submit,
 button.button,
-.widget button {
+.widget-submit button {
     @include button;
     @include button-color();
     outline: none;

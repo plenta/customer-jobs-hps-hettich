@@ -48,7 +48,7 @@
             }
 
             .col_2 {
-                padding-left: $logo-portrait-width-reader * (2/3) + $base-spacing-s + 10px + $base-spacing / 4;
+                padding-left: $logo-portrait-width-reader * (2/3) + $base-spacing-s + 10px + math.div($base-spacing, 4);
             }
         }
 
@@ -61,7 +61,7 @@
                 padding-left: $base-spacing-s * 2;
 
                 .image {
-                    margin-bottom: $base-spacing-gc / 2;
+                    margin-bottom: math.div($base-spacing-gc, 2);
                 }
             }
         }

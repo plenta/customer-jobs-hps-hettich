@@ -1,7 +1,7 @@
 @use "sass:math";
 .mod_job_offer_manager, .mod_job_request_manager {
     > div {
-        margin-bottom: $base-spacing-x-large;
+        margin-bottom: $base-spacing-large;
     }
 
     .new_job {
@@ -17,17 +17,37 @@
         padding-bottom: math.div($base-spacing, 2);
     }
 
-    .job_manager_list {
-        .job_manager_list_intro {
-            display: inline-block;
-            width: 100%;
-            border-bottom: $base-border;
-            padding-bottom: $base-spacing-xx-s;
+    .sort-wrapper {
+        margin-bottom: $base-spacing-large;
+
+        > p:first-child {
+            margin-bottom: $base-spacing-s;
+            @extend %h3;
         }
 
-        .job {
+        .filter_wrapper {
             display: flex;
             flex-wrap: wrap;
+            gap: $base-spacing-x-s;
+
+            > span {
+                cursor: pointer;
+                @include button();
+                @include button-color();
+
+                &.active {
+                    background-color: darken($color-default, 30);
+                }
+            }
+        }
+    }
+
+    .job_manager_list {
+        .job {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            border-bottom: $base-border;
 
             + .job {
                 margin-top: $base-spacing;
@@ -35,14 +55,11 @@
         }
 
         .job_info {
-            border: $base-border;
-            order: 5;
-            width: 100%;
             padding: $base-spacing-x-s $base-spacing-s;
         }
 
         .job_edit_wrapper {
-            order: 2;
+            //order: 2;
             margin-left: auto;
             display: flex;
             border: $base-border;
@@ -88,29 +105,18 @@
                 &.extend_item:before {
                     content: '\f01e';
                 }
+                &.duplicate_item:before {
+                    content: '\f0c5';
+                }
             }
         }
 
         .job {
-
-            padding-right: 100px + $base-spacing-s;
-            @include clear;
-
-
-            > * {
-                float: left;
-            }
-
-            .job_info {
-                width: 100%;
-            }
             .job_edit_wrapper {
-                width: 100px;
-                margin-right: -100%;
                 margin-top: 0;
 
                 a {
-                    position: relative;
+                    /*position: relative;
                     text-indent: -99999px;
                     display: inline-block;
                     padding-right: math.div($base-spacing-s, 4);
@@ -133,7 +139,7 @@
                     }
                     &.view_job:before {
                         content: "\f06e";
-                    }
+                    }*/
                 }
             }
         }

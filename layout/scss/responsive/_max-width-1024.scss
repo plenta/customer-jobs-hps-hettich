@@ -1,3 +1,4 @@
+@use "sass:math";
 @media screen and (max-width: 1024px) {
     :root {
         --left-column-width: 250px;
@@ -51,39 +52,36 @@
             ul {
                 a, strong {
                     display: block;
-                    padding: $base-spacing-s / $gc $base-spacing-s;
+                    padding: math.div($base-spacing-s, $gc $base-spacing-s);
                     border-bottom: $base-border;
                 }
             }
 
-            ul.level_1 > li {
-                float: none;
-                margin: 0;
+            ul.level_1 {
+                border-bottom: 2px solid $color-default;
 
-                > a, > strong {
-                    padding-left: $content-padding-first-break-point;
-                    padding-right: $content-padding-first-break-point;
-                }
+                > li {
+                    float: none;
+                    margin: 0;
 
-                &.submenu ul {
-                    display: block;
-                    position: static;
-                    padding: 0;
-                    background-color: transparent;
-                }
-
-                &.last {
-                    a, strong {
-                        border-bottom-color: $color-default;
-                        border-bottom-width: 2px;
+                    > a, > strong {
+                        padding-left: $content-padding-first-break-point;
+                        padding-right: $content-padding-first-break-point;
                     }
-                }
 
-                &.first {
-                    a, strong {
-                        border-top-color: $color-default;
-                        border-top-width: $base-border-width;
-                        border-top-style: $base-border-style;
+                    &.submenu ul {
+                        display: block;
+                        position: static;
+                        padding: 0;
+                        background-color: transparent;
+                    }
+
+                    &.first {
+                        > a, > strong {
+                            border-top-color: $color-default;
+                            border-top-width: $base-border-width;
+                            border-top-style: $base-border-style;
+                        }
                     }
                 }
             }

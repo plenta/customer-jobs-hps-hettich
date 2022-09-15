@@ -61,6 +61,14 @@ body:not(.layout-left):not(.layout-right) {
                     padding-top: $base-spacing-large;
                 }
             }
+
+            &:last-child {
+                padding-bottom: 0;
+
+                .inside-article {
+                    padding-bottom: $base-spacing-large;
+                }
+            }
         }
     }
 }
