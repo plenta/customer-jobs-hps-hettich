@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2">
+    <file>
+        <body>
+            <trans-unit id="tl_job_offer.moneyExtended.0">
+                <target>Gehalt (Textfeld)</target>
+            </trans-unit>
+            <trans-unit id="tl_job_offer.moneyExtended.1">
+                <target>Geben Sie hier das angebotene Gehalt ein.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

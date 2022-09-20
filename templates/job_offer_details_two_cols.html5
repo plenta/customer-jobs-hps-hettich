@@ -49,6 +49,14 @@
                                 <span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_money']; ?><br></span> <span itemprop="baseSalary"><?= number_format($this->money, 0, ',', '.'); ?></span> EUR
                             </div><br>
                         <?php endif; ?>
+
+                        <?php if (!empty($this->moneyExtended)): ?>
+                        <div class="money">
+                            <span class="label">Gehalt:</span><br><?= $this->moneyExtended ?>
+                        </div>
+                        <br>
+                        <?php endif; ?>
+
                         <?php if (strlen($this->type)): ?>
                             <div class="type"><span class="label"><?= $GLOBALS['TL_LANG']['JOBS']['offer_label_type']; ?><br></span> <span itemprop="employmentType"><?= $this->type; ?></span></div><br>
                         <?php endif; if (strlen($this->category)): ?>

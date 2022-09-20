@@ -104,6 +104,10 @@ class CustomImportListener
                     $objJob->author = $settings['author'];
                 }
 
+                if (!empty((string) $job->Stunde_brutto)) {
+                    $objJob->moneyExtended = (string) $job->Stunde_brutto;
+                }
+
                 if ($objJob->isModified()) {
                     $objJob->tstamp = $time;
                     $objJob->publishedDate = $time;
