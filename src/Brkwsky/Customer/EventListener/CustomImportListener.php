@@ -92,6 +92,7 @@ class CustomImportListener
                 $objJob->name = (string) $job->Positionstext;
                 $objJob->description = StringUtil::decodeEntities((string) $job->Homepage);
                 $objJob->published = $settings['published'];
+                $objJob->workingHours = (string) $job->Arbeitszeit;
                 $this->import->generateAlias($objJob);
 
                 $objJob->imported = $settings['importAlias'];
