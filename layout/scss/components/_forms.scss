@@ -145,6 +145,31 @@ p.error {
     display: block;
 }
 
+.widget-calendar {
+    > div {
+        position: relative;
+
+        input {
+            padding-right: 40px + $base-spacing-xx-s;
+        }
+
+        .input-button {
+            position: absolute;
+            height: 100%;
+            width: 40px;
+            top: 0;
+            right: 0;
+
+            svg {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
 // FontAwesome Radio and Checkbox
 @if ($font-awesome-active == true) {
 

@@ -1,6 +1,7 @@
 #{$content-classes} {
     width: 100%;
     max-width: $content-width;
+    background-color: #fff;
     @include margin-auto;
 }
 

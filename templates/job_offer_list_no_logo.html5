@@ -1,10 +1,10 @@
-<div class="layout_no_logo <?php echo $this->class; ?>" itemscope itemtype="http://schema.org/JobPosting">
+<div class="layout_no_logo <?php echo $this->class; ?>">
     <div class="headline">
-        <a href="<?= $this->href; ?>" title="<?= $this->name; ?>"<?= $this->attributes; ?> itemprop="url"><span itemprop="title"><?= $this->name; ?></span></a>
+        <a href="<?= $this->href; ?>" title="<?= $this->name; ?>"<?= $this->attributes; ?>><span><?= $this->name; ?></span></a>
     </div>
     <div class="meta">
         
-        <span class="type" itemprop="employmentType"><?= $this->type; ?></span><?php if ($this->jobCity): ?><span class="city" itemprop="jobLocation"><?= $this->jobCity; ?></span><? elseif ($this->author->city): ?><span class="city" itemprop="jobLocation"><?= $this->author->city; ?></span><? elseif ($this->city): ?><span class="city" itemprop="jobLocation"><?= $this->city; ?></span><?php endif; ?>
+        <span class="type"><?= $this->type; ?></span><?php if ($this->jobCity): ?><span class="city"><?= $this->jobCity; ?></span><? elseif ($this->author->city): ?><span class="city"><?= $this->author->city; ?></span><? elseif ($this->city): ?><span class="city"><?= $this->city; ?></span><?php endif; ?>
     </div>
     <?php if ($this->teaser): ?>
       <div class="teaser">

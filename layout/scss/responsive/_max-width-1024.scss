@@ -1,4 +1,9 @@
+@use "sass:math";
 @media screen and (max-width: 1024px) {
+    :root {
+        --left-column-width: 250px;
+        --right-coloumn-width: 250px;
+    }
     
     // Stage
     .custom > #stage .mod_article.article-image + .mod_article {
@@ -10,38 +15,6 @@
     #header {
         .mainmenu {
             display: none;
-        }
-    }
-    
-    // Left Column
-    $left-column-width: 250px;
-    body.layout-left {
-        #container {
-            padding-left: $left-column-width;
-        }
-
-        #left {
-            width: $left-column-width;
-            right: $left-column-width;
-
-            > .inside {
-                padding-right: $base-spacing-s * 2;
-            }
-        }
-    }
-    // Right Column
-    $right-column-width: 250px;
-    body.layout-right {
-        #container {
-            padding-right: $right-column-width;
-        }
-
-        #right {
-            width: $right-column-width;
-
-            > .inside {
-                padding-left: $base-spacing-s * 2;
-            }
         }
     }
 
@@ -62,4 +35,96 @@
             }
         }
     }
+
+    // Mobile Navigation Start
+    #header {
+        .mainmenu {
+            position: absolute;
+            bottom: -$base-spacing-s;
+            z-index: 1000;
+            transform: translate(-50%, 100%);
+            width: 100vw;
+            left: 50%;
+            background-color: rgba(255, 255, 255, 0.99);
+            overflow: auto;
+            display: none;
+
+            ul {
+                a, strong {
+                    display: block;
+                    padding: math.div($base-spacing-s, $gc $base-spacing-s);
+                    border-bottom: $base-border;
+                }
+            }
+
+            ul.level_1 {
+                border-bottom: 2px solid $color-default;
+
+                > li {
+                    float: none;
+                    margin: 0;
+
+                    > a, > strong {
+                        padding-left: $content-padding-first-break-point;
+                        padding-right: $content-padding-first-break-point;
+                    }
+
+                    &.submenu ul {
+                        display: block;
+                        position: static;
+                        padding: 0;
+                        background-color: transparent;
+                    }
+
+                    &.first {
+                        > a, > strong {
+                            border-top-color: $color-default;
+                            border-top-width: $base-border-width;
+                            border-top-style: $base-border-style;
+                        }
+                    }
+                }
+            }
+
+            ul.level_2 {
+                a, strong {
+                    padding-left: $base-spacing-s * 2;
+                }
+            }
+        }
+
+        .nav_toggle {
+            right: 34px;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            display: block;
+            z-index: 1001;
+
+            &:after {
+                display: block;
+                font-size: 36px;
+                font-family: $fa;
+                content: "\f0c9";
+            }
+        }
+
+        .nav_checkbox:checked {
+            ~ .nav_toggle {
+
+                &:after {
+                    content: "\f00d";
+                }
+            }
+
+            ~ .mainmenu {
+                display: block;
+            }
+        }
+
+        input[type=checkbox] + label.nav_toggle:before {
+            display: none;
+        }
+    }
+    // Mobile Navigation End
 }

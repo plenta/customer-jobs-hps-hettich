@@ -117,7 +117,7 @@ $base-border-radius: 4px;
 // Layout
 $content-width: 980px;
 $content-padding-first-break-point: 20px; // used to set the first breakpoint dynamically
-$content-classes: '#header .inside, #footer .inside, #main .inside-article'; // other classes: inside-article, inside-x
+$content-classes: '#header .inside, #footer .inside, body:not(.layout-left):not(.layout-right) #main .inside-article, body.layout-left #container, body.layout-right #container'; // other classes: inside-article, inside-x
 
 $left-column-width: 300px;
 $right-column-width: 250px;

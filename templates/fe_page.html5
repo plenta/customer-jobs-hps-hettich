@@ -1,6 +1,5 @@
 <?php $this->extend('fe_page') ?>
 <?php $this->block('head') ?>
-<?php $this->robots = 'noindex, nofollow' ?>
 <?php $this->parent() ?>
     <link rel="stylesheet" href="/<?= $this->asset('plentatheme/layout.css', 'plentatheme') ?>">
     <script src="/<?= $this->asset('plentatheme/layout.js', 'plentatheme') ?>" defer></script>

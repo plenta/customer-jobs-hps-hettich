@@ -7,6 +7,11 @@
             </trans-unit>
             <trans-unit id="tl_job_offer.workingHours.1">
                 <target>Bitte geben Sie die Arbeitszeit ein.</target>
+            <trans-unit id="tl_job_offer.moneyExtended.0">
+                <target>Gehalt (Textfeld)</target>
+            </trans-unit>
+            <trans-unit id="tl_job_offer.moneyExtended.1">
+                <target>Geben Sie hier das angebotene Gehalt ein.</target>
             </trans-unit>
         </body>
     </file>
