@@ -135,6 +135,14 @@
                 margin-bottom: 8px;
             }
 
+            &:hover {
+                background-color: $color-gray-light;
+
+                .headline a {
+                    color: $color-default-2;
+                }
+            }
+
             .meta {
                 span {
                     display: inline-block;
@@ -273,5 +281,17 @@
                 }
             }
         }  
+    }
+}
+
+.mod_job_offer_reader .job_offer_details .description {
+    center {
+        background-color: $color-gray-light;
+        padding-top: $base-spacing-s;
+        padding-bottom: $base-spacing-s;
+
+        h3 {
+            color: $color-default-2;
+        }
     }
 }
