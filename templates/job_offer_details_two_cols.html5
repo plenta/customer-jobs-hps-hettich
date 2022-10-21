@@ -1,8 +1,7 @@
 <div class="job_offer_details">
     <?php $this->block('head'); ?>
    
-    
-    <p align="justify">Wir sind ein starkes Team aus Recruitern und erstklassigen Vertriebsmitarbeitern die alle ein Ziel verfolgen: DEN FÜR SIE PERFEKTEN JOB FINDEN. Profitieren Sie von unserer Erfahrung, einer persönlichen und fairen Betreuung und unseren guten Kontakten zu Kunden aus Industrie und Handwerk.</p>Wir suchen zum nächstmöglichen Zeitpunkt<br><br>
+    <p align="justify">Wir sind ein starkes Team aus Recruitern und erstklassigen Vertriebsmitarbeitern die alle ein Ziel verfolgen: DEN FÜR SIE PERFEKTEN JOB FINDEN. Profitieren Sie von unserer Erfahrung, einer persönlichen und fairen Betreuung und unseren guten Kontakten zu Kunden aus Industrie und Handwerk.<br><br>Wir suchen zum nächstmöglichen Zeitpunkt</p>
         <div class="details_head">
             <div class="details_head_inside">
                 <?php $this->block('headline'); ?>
@@ -55,6 +54,13 @@
                             <span class="label">Gehalt:</span><br><?= $this->moneyExtended ?>
                         </div>
                         <br>
+                        <?php endif; ?>
+
+                        <?php if (!empty($this->workingHours)): ?>
+                            <div class="working-hours">
+                                <span class="label">Harbeitszeit:</span><br><?= $this->workingHours ?>
+                            </div>
+                            <br>
                         <?php endif; ?>
 
                         <?php if (strlen($this->type)): ?>

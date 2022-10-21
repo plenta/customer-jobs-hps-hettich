@@ -15,6 +15,7 @@ $GLOBALS['TL_DCA']['tl_job_offer']['fields']['workingHours'] = [
     'exclude' => true,
     'inputType' => 'text',
     'eval' => ['maxlength' => 255],
+    'sql' => "varchar(255) NOT NULL default ''",
 ];
 
 $GLOBALS['TL_DCA']['tl_job_offer']['fields']['moneyExtended'] = [
