@@ -281,5 +281,11 @@
             content: "#{$faIcon}";
             font-size: $fontSize;
         }
+
+        &:hover {
+            &:before {
+                color: $color-default-2;
+            }
+        }
     }
 }

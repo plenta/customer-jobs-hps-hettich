@@ -199,6 +199,7 @@
 
     .details_head_inside h1, .boxed-blue {
         background-color: $color-default-2;
+        text-align: center;
         color: #fff;
         padding: math.div($base-spacing, 6) math.div($base-spacing, 4);
     }
@@ -271,5 +272,11 @@
 
     .subheadline {
         font-weight: bold;
+    }
+}
+
+.contact_details {
+    .email:hover, .ce_hyperlink:hover {
+        text-decoration: underline;
     }
 }
