@@ -45,7 +45,13 @@ class CustomImportListener
 
                 $objJob->start = strtotime((string) $job->AdStart);
                 $objJob->stop = strtotime((string) $job->AdExpires);
-                $objJob->jobCity = (string) $job->Einsatzort;
+                $location = explode(' ', (string) $job->Einsatzort);
+                if (preg_match('/\A[0-9]{5}\z/', $location[0])) {
+                    $objJob->region = $location[0];
+                    unset($location[0]);
+                }
+                $objJob->jobCity = implode(' ', $location);
+                $objJob->jobCountry = 'DE';
 
                 $xmlJobTypes = $job->xpath('Stellenart_Detailed');
                 $jobTypes = StringUtil::deserialize($settings['mapper_jobTypes']);
