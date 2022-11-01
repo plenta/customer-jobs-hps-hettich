@@ -99,6 +99,10 @@ class CustomImportListener
                 $objJob->description = StringUtil::decodeEntities((string) $job->Homepage);
                 $objJob->published = $settings['published'];
                 $objJob->workingHours = (string) $job->Arbeitszeit;
+                $objJob->save();
+                if (str_ends_with($objJob->alias, '-')) {
+                    $objJob->alias = '';
+                }
                 $this->import->generateAlias($objJob);
 
                 $objJob->imported = $settings['importAlias'];
