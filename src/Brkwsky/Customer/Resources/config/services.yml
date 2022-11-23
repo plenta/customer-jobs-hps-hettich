@@ -4,3 +4,8 @@ services:
         arguments: ['@brkwsky.jobs.import', '@brkwsky.jobs.import.model']
         calls:
             - [setContainer, ['@service_container']]
+
+    Brkwsky\Customer\EventListener\ExportLoopListener:
+        public: true
+        autoconfigure: true
+        autowire: true
